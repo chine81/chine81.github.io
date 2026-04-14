@@ -1,0 +1,3011 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Web Demo</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #111;
+            color: white;
+        }
+
+        /* HEADER */
+        .header {
+            background: black;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        /* LAYOUT */
+        .container {
+    display: flex;
+    gap: 20px; /* 👈 khoảng hở giữa 2 bên */
+}
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 200px;
+            padding: 20px;
+            background: #1a1a1a;
+        }
+
+        .sidebar a {
+    display: block;
+    color: #ccc;
+    padding: 10px;
+    font-size: 20px;   /* 👈 tăng lên */
+    text-decoration: none;
+}
+            display: block;
+            color: red;
+            margin: 5px 0;
+            text-decoration: none;
+        }
+
+        /* CONTENT */
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  align-items: start; /* tránh kéo giãn gây lỗi */
+}
+
+        /* CARD */
+        .card {
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .name {
+            padding: 10px;
+        }
+
+        .verified {
+            color: lime;
+            font-size: 12px;
+             padding: 2px 6px;
+        }
+        <style>
+
+.logo {
+    font-size: 22px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.register {
+    background: orange;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.login {
+    background: red;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.icon {
+    margin-left: 10px;
+    cursor: pointer;
+}
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.spice {
+    color: orange;
+}
+
+.dubai {
+    color: red;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.logo-icon {
+    width: 35px;
+    margin-right: 10px;
+}
+
+.spice {
+    color: orange;
+}
+
+.dubai {
+    color: red;
+}
+
+ 
+        .menu a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            color: orange;
+        }
+        .saudi {
+    color: orange;
+}
+}  /* 👈 THÊM DẤU NÀY */
+
+.sidebar h3 {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+/* ===== DROPDOWN ===== */
+.dropdown {
+    position: relative;
+}
+.dropdown-content label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.dropdown-content label:hover {
+    background: #333;
+}
+
+.dropdown-content input[type="radio"] {
+    accent-color: lime;
+}
+
+.dropdown-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #555;
+    color: white;
+
+    padding: 4px 0;
+    font-size: 14px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    width: 160px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #222;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+
+    z-index: 9999; /* 👈 THÊM DÒNG NÀY */
+
+    width: 200px;
+}
+
+.dropdown-content label {
+    display: block;
+    margin: 5px 0;
+    cursor: pointer;
+    color: white;
+}
+
+
+.sidebar .saudi {
+    font-size: 29px;
+    font-weight: bold;
+    display: block;
+    margin-top: 1px;
+}
+.sidebar {
+    border-right: 3px solid rgba(255,255,255,0.3);
+    padding-right: 20px;
+}
+.filter-bar {
+    display: flex;
+    gap: 20px;
+    background: #2b2b2b;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    color: #ccc;
+    font-size: 13px;
+
+    justify-content: flex-end; /* 👈 thêm dòng này */
+}
+
+.filter-item select {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #555;
+    color: white;
+
+    padding: 4px 0;
+    font-size: 14px;
+    height: 28px;
+
+    outline: none;
+    appearance: none;
+}
+
+.filter-item select:focus {
+    border-bottom: 2px solid gold;
+}
+.dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #555;
+    color: white;
+
+    padding: 4px 0;        /* 👈 giảm padding */
+    font-size: 14px;       /* 👈 giống select */
+    height: 28px;          /* 👈 ép chiều cao */
+    display: flex;
+    align-items: center;   /* 👈 căn giữa chữ */
+
+    cursor: pointer;
+    width: 160px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #222;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    z-index: 100;
+    width: 200px;
+}
+.filter-bar {
+    z
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 30px; /* 👈 SỬA CHỖ NÀY */ 
+
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    
+}
+body {
+  font-family: Arial;
+}
+
+/* MENU giống anna */
+.menu {
+  display: flex;
+  gap: 50px; /* 👈 chuẩn đẹp */
+  letter-spacing: 0.5px; /* chữ thoáng hơn */
+}
+.menu a {
+  font-family: 'Playfair Display', serif;
+  font-size: 18.5px;
+  font-weight: 700; /* 🔥 CHỮ ĐẬM NẰM Ở ĐÂY */
+}
+/* TIÊU ĐỀ */
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* NỘI DUNG */
+p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+/* ===== CARD HOVER ===== */
+.card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+/* hover toàn card */
+.card:hover {
+transform: translateY(-4px); /* 🔽 nhẹ thôi */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4); /* 🔽 shadow nhẹ */
+}
+
+/* click effect */
+.card:active {
+    transform: scale(0.97);
+}
+
+/* ===== IMAGE ZOOM ===== */
+.card img {
+    transition: transform 0.4s ease;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+/* ===== TEXT EFFECT ===== */
+.card:hover .name {
+    color: #ff4d6d;
+}
+
+/* ===== VERIFIED GLOW ===== */
+.card:hover .verified {
+    text-shadow: 0 0 8px #000000;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 40px 0;
+}
+
+.pagination a,
+.pagination span {
+    padding: 10px 15px;
+    background: #2c2c2c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/* hover */
+.pagination a:hover {
+    background: #555;
+}
+
+/* nút đang chọn */
+.pagination .active {
+    background: #ff6b9d;
+    color: white;
+}
+.pagination a {
+    box-shadow: 0 4px 0 #111;
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.img-box {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.img-box img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+/* overlay nằm góc trái */
+.overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* nền mờ nhẹ cho dễ nhìn */
+.overlay::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  z-index: -1;
+  border-radius: 10px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.phone-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.location {
+  font-size: 13px;
+  opacity: 0.9;
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card {
+  background: #1a1a1a;
+  border-radius: 15px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative; /* KHÔNG dùng absolute */
+}
+
+/* ảnh */
+.img-box img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+/* ô đen dưới */
+.info {
+  padding: 10px;
+  background: #1a1a1a;
+}
+
+/* tên */
+.name {
+  color: #ff4d6d;
+  font-size: 19px !important;
+  font-weight: bold;
+  margin-bottom: 10px !important;
+}
+
+/* dòng sdt + icon */
+.phone-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ccc;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.icon {
+  font-size: 16px;
+}
+
+/* location */
+.location {
+  color: #aaa;
+  font-size: 13px;
+}
+/* reset link */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* CARD */
+.card {
+  background: #1a1a1a;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* hover nổi lên */
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+.img-box {
+  position: relative;
+  width: 100%;
+  height: 300px; /* 🔥 bắt buộc phải có */
+  overflow: hidden;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* zoom ảnh */
+.card:hover .gradient {
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
+/* badge verified */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #00ff66;
+  color: black;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* INFO */
+.info {
+  padding: 12px;
+}
+
+/* tên */
+.name {
+  color: #ff4d6d;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* dòng phone */
+.phone-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+/* phone */
+.phone {
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* icon group */
+.icons {
+  display: flex;
+  gap: 8px;
+}
+
+/* icon style */
+.icons span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* WhatsApp */
+.whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+/* Telegram */
+.telegram {
+  background: #0088cc;
+  color: white;
+}
+
+/* hover icon */
+.icons span:hover {
+  transform: scale(1.2);
+}
+
+/* location */
+.location {
+  color: #aaa;
+  font-size: 13px;
+}
+body {
+  background: #0d0d0d;
+  font-family: Arial;
+}
+
+/* link */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* CARD */
+.card {
+  background: #151515;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.35s;
+  cursor: pointer;
+  position: relative;
+}
+
+/* hover xịn */
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(255, 0, 100, 0.25);
+}
+
+/* IMAGE */
+.img-box {
+  position: relative;
+}
+
+.img-box img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+/* zoom */
+.card:hover img {
+  transform: scale(1.08);
+}
+
+/* gradient sexy */
+.gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
+/* top badge */
+.top-bar {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 1px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.verified {
+  background: linear-gradient(45deg, #0e4d1b, #23cf14); /* đỏ hồng */
+  color: #fff; /* chữ trắng */
+
+  font-size: 9px;
+  font-weight: 800;
+
+  padding: 4px 1px;
+  border-radius: 8px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.online {
+  background: #111;
+  color: #00ff66;
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 6px;
+}
+
+/* favorite */
+.favorite {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.5);
+  padding: 6px;
+  border-radius: 50%;
+  color: #ff4d6d;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.favorite:hover {
+  background: #ff4d6d;
+  color: white;
+  transform: scale(1.2);
+}
+
+/* INFO */
+.info {
+  padding: 14px;
+}
+
+/* NAME */
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff4d6d;
+  margin-bottom: 8px;
+}
+
+/* phone row */
+.phone-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.phone {
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* ICON */
+.icons {
+  display: flex;
+  gap: 8px;
+}
+
+.icons span {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* WhatsApp */
+.whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+/* Telegram */
+.telegram {
+  background: #0088cc;
+  color: white;
+}
+
+/* hover icon */
+.icons span:hover {
+  transform: scale(1.2);
+}
+
+/* location */
+.location {
+  color: #aaa;
+  font-size: 13px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+.card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 0 6px #00ff66;
+}
+
+.gradient {
+  transition: 0.3s;
+}
+
+.card:hover .gradient {
+  background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+}
+.verified {
+  transition: 0.3s;
+}
+
+.card:hover .verified {
+  box-shadow: 0 0 12px #00ff66, 0 0 20px #00ff66;
+}
+.icons span {
+  transition: 0.2s;
+}
+
+.icons span:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+.name {
+  transition: 0.3s;
+}
+
+.card:hover .name {
+  transform: translateY(-2px);
+  text-shadow: 0 0 8px rgba(255,0,100,0.6);
+}
+.card:active .verified,
+.card:hover .verified {
+  opacity: 1 !important;
+  filter: none !important;
+}
+.card:hover .verified {
+box-shadow: 0 0 6px rgba(0,255,102,0.8);
+}
+.icons span {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 16px;
+  transition: 0.25s;
+}
+
+/* WhatsApp */
+.whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+/* Telegram */
+.telegram {
+  background: #0088cc;
+  color: white;
+}
+
+/* hover xịn */
+.icons span:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* click effect */
+.icons span:active {
+  transform: scale(0.95);
+}
+.icons a {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* màu */
+.whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.telegram {
+  background: #0088cc;
+  color: white;
+}
+
+/* hover xịn */
+.icons a:hover {
+  transform: scale(1.15);
+}
+.location {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  text-align: left;
+}
+.location {
+  font-size: 15px;
+  color: #acabab;
+}
+.img-box {
+  height: 380px; /* tăng lên (300 → 380 hoặc 420 tùy bạn) */
+  overflow: hidden;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.info {
+  padding: 10px; /* giảm từ 15px xuống */
+}
+.name {
+  margin-top: -18px;
+  font-size: 18px;
+}
+
+.phone-row {
+  margin-top: 5px;
+}
+
+.location {
+  margin-top: 2px;
+  font-size: 13px;
+}
+.icons {
+  position: relative;
+  top: 24px; /* chỉnh 5 → 10 nếu muốn xuống thêm */
+}
+.location {
+  margin-top: 6px;
+  font-size: 14px;   /* tăng size */
+  color: white;      /* đổi sang trắng */
+  font-weight: 500;
+}
+.phone {
+  display: block;
+  margin-top: 20px;   /* đẩy xuống */
+  color: #fff;       /* trắng */
+  font-size: 14px;
+  font-weight: 500;
+}
+.phone-row {
+  margin-top: -35px; /* số âm = kéo lên */
+}
+
+.location {
+  margin-top: 2px; /* giữ khoảng cách đẹp */
+}
+.info {
+  pointer-events: none;
+}
+.icons a {
+  pointer-events: auto;
+}
+.icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 18px;
+  color: white;
+  transition: 0.3s;
+}
+
+/* màu nền */
+.whatsapp {
+  background: #25D366;
+}
+
+.telegram {
+  background: #229ED9;
+}
+
+/* 🔥 hover nổi */
+.icons a:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* 🔥 khi bấm */
+.icons a:active {
+  transform: scale(0.95);
+}
+.icons a:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 0 15px rgba(0,255,100,0.6);
+}
+
+.rainbow-text {
+  font-weight: 700;
+  font-size: 28px;      /* ↓ nhỏ lại (tuỳ chỉnh 24–32px) */
+  margin-top: 30px;     /* ↓ đẩy xuống dưới */
+  margin-left: 20px;    /* → đẩy qua phải */
+  text-transform: uppercase;
+  background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    violet
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.rainbow-text {
+  font-size: 24px;
+  transform: translate(0px, 25px);
+}
+/* menu */
+.nav a {
+  font-size: 20px;           /* chữ to lên */
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* hover */
+.nav a:hover {
+  color: #ff4da6;            /* hồng */
+}
+
+/* gạch chân animation */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #ff4da6;
+  transition: 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* khi đang active (đang ở trang đó) */
+.nav a.active {
+  color: #ff4da6;
+}
+
+.nav a.active::after {
+  width: 100%;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.08); /* nền mờ nhẹ */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border-radius: 10px;
+  padding: 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  /* để nổi lên */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.premium {
+  position: absolute;
+  top: 8px;
+  right: -26px;
+
+  width: 90px;
+  height: 16px; /* 🔥 chiều cao cố định */
+
+  background: linear-gradient(45deg, #df1439, #f10808);
+  color: #fff;
+
+  font-size: 9px;   /* 🔥 nhỏ lại */
+  font-weight: 700;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform: rotate(45deg) translate(3px, 1px);
+
+  z-index: 10;
+
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+
+  letter-spacing: 0.5px;
+}
+
+.whatsapp i {
+  font-size: 25px; /* 🔥 tăng size icon */
+}
+.telegram i {
+  font-size: 25px; /* 🔥 tăng size icon */
+}
+.phone-row,
+.phone-row span,
+.location {
+  font-size: 14.5px !important;
+}
+.info {
+  padding-top: 10px !important;
+  padding-bottom: 4px !important;
+}
+
+.phone-row {
+  margin-bottom: 3px !important;
+  line-height: 1.2 !important;
+}
+
+.location {
+  line-height: 1.2 !important;
+}
+.phone-row,
+.location,
+.icons {
+  transform: translateY(-4px) !important;
+}
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.container {
+  width: 100% !important;       /* 🔥 đổi từ 100vw → 100% */
+  max-width: 100% !important;
+
+  margin: 0 auto !important;    /* 🔥 căn giữa */
+
+  padding: 0 0px !important;    /* giữ lề đều 2 bên */
+}
+body {
+  margin: 0;
+  overflow-x: hidden; /* tránh tràn ngang */
+}
+.content {
+  margin-left: -21px; 
+  margin-right: -21px;/* 🔥 kéo sang trái */
+}
+/* ===== FIX LOGO IMAGE ===== */
+.logo img {
+  width: 180px;        /* chỉnh size logo */
+  height: auto;
+  filter: brightness(1.2) contrast(1.1);
+  transition: 0.3s;
+}
+
+/* hover xịn */
+.logo img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.3) drop-shadow(0 0 10px #ff4da6);
+}
+.register,
+.login {
+  padding: 13px 30px;
+  font-size: 14px;
+  border-radius: 35px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+/* hover xịn */
+.register:hover,
+.login:hover {
+  transform: scale(1.08);
+}
+.auth a {
+  display: inline-block !important; /* 👈 QUAN TRỌNG */
+  text-decoration: none !important;
+  color: #fff !important;
+
+  transition: all 0.25s ease !important;
+}
+
+/* 👇 hover nổi lên */
+.auth a:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35) !important;
+  filter: brightness(1.1) !important;
+}
+
+/* 👇 khi bấm xuống */
+.auth a:active {
+  transform: translateY(1px) scale(0.97) !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3) !important;
+}
+    </style>
+<body>
+ <div class="container">
+  <div class="layout">
+
+    <!-- BÊN TRÁI -->
+    <div class="left">
+      <!-- DÁN PHẦN GALLERY ẢNH CỦA BẠN VÀO ĐÂY -->
+    </div>
+
+    <!-- BÊN PHẢI -->
+    <div class="right">
+
+      <!-- sau này bạn thêm info vào đây -->
+    </div>
+
+  </div>
+</div>   
+
+    <!-- HEADER -->
+<div class="header">
+    
+
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="logo.png" class="logo-img">
+    </div>
+
+    <!-- MENU -->
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="#">Escorts</a>
+  <a href="#">Agencies</a>
+  <a href="escortreviews.html#">Escort Reviews</a>
+  <a href="#">Contact</a>
+</div>
+
+    <!-- BUTTON -->
+<div class="auth">
+    <a href="register.html" class="register">Register</a>
+    <a href="login.html" class="login">Login</a>
+</div>
+
+</div>
+    
+    <!-- BODY -->
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h3>
+    Country <br>
+    <span class="saudi">Saudi Arabia</span>
+</h3>
+            <a href="#">🏙️ Riyadh</a>
+            <a href="#">🌊 Jeddah</a>
+            <a href="#">⛰️ Abha</a>
+            <a href="#">🏜️ Hail</a>
+            <a href="#">🌴 Buraydah</a>
+            <a href="#">🌊 Dammam</a>
+            <a href="#">🏢 Al Khobar</a>
+            <a href="#">🌴 Al Hofuf</a>
+            <a href="#">🏭 Jubail</a>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+  <div class="filter-bar">
+
+  <!-- Included Services -->
+  <div class="filter-item">
+    <label>Included Services:</label>
+
+    <div class="dropdown">
+      <div class="dropdown-btn" onclick="toggleDropdown(this)">
+        Select duration ▼
+      </div>
+
+      <div class="dropdown-content">
+        <label><input type="radio" name="price"> 1 Hour</label>
+        <label><input type="radio" name="price"> 2 Hours</label>
+        <label><input type="radio" name="price"> 3 Hours</label>
+        <label><input type="radio" name="price"> 6 Hours</label>
+        <label><input type="radio" name="price"> 12 Hours</label>
+        <label><input type="radio" name="price"> Full Night</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Price -->
+  <div class="filter-item">
+    <label>Price:</label>
+
+    <div class="dropdown">
+      <div class="dropdown-btn" onclick="toggleDropdown(this)">
+        All Prices ▼
+      </div>
+
+      <div class="dropdown-content">
+        <label><input type="radio" name="price2" checked> All Prices</label>
+        <label><input type="radio" name="price2"> 0 - 100 USD</label>
+        <label><input type="radio" name="price2"> 100 - 200 USD</label>
+        <label><input type="radio" name="price2"> 200 - 300 USD</label>
+        <label><input type="radio" name="price2"> Over 300 USD</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nationality -->
+  <div class="filter-item">
+    <label>Nationality:</label>
+    <select>
+      <option>Select nationality</option>
+      <option>Vietnam</option>
+      <option>Dubai</option>
+      <option>Thai</option>
+    </select>
+  </div>
+
+  <!-- Language -->
+  <div class="filter-item">
+    <label>Language:</label>
+    <select>
+      <option>Select language</option>
+      <option>English</option>
+      <option>Arabic</option>
+    </select>
+  </div>
+
+  <!-- Age -->
+  <div class="filter-item">
+    <label>Age:</label>
+    <select>
+      <option>Select age</option>
+      <option>18 - 25</option>
+      <option>25 - 30</option>
+    </select>
+  </div>
+
+  <!-- Category -->
+  <div class="filter-item">
+    <label>Category:</label>
+    <select>
+      <option>Select category</option>
+      <option>VIP</option>
+      <option>Normal</option>
+    </select>
+  </div>
+
+</div>
+
+<h1 class="rainbow-text">
+  Choose Independent Saudi Arabia Escorts
+</h1>
+            <div class="grid">
+
+
+<div class="card" onclick="window.location='anna.html'">
+
+  <div class="img-box">
+    <img src="Anna1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Anna</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 23 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Riyadh, Saudi Arabia</div>
+  </div>
+
+</div>
+
+
+<div class="card" onclick="window.location='Rosalie.html'">
+
+  <div class="img-box">
+    <img src="Rosalie1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Rosalie</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 21 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Jeddah, Saudi Arabia  </div>
+  </div>
+
+</div>
+ 
+<div class="card" onclick="window.location='Lauren.html'">
+
+  <div class="img-box">
+    <img src="Lauren1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Lauren</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 25 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Buraydah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Hellen.html'">
+
+  <div class="img-box">
+    <img src="Hellen1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Hellen</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 26 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Abha, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Natalya.html'">
+
+  <div class="img-box">
+    <img src="Natalya1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Natalya</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 28 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Dammam, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Milea.html'">
+
+  <div class="img-box">
+    <img src="Milea1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Milea</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 26 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Jubail, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Marireins.html'">
+
+  <div class="img-box">
+    <img src="Marireins1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Marireins</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 23 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Riyadh, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Ciara.html'">
+
+  <div class="img-box">
+    <img src="Ciara1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Ciara</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 23 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Buraydah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Svetlana.html'">
+
+  <div class="img-box">
+    <img src="Svetlana1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Svetlana</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 26 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Abha, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Emma Charlotte.html'">
+
+  <div class="img-box">
+    <img src="Emma Charlotte1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Emma Charlotte</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 29 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Buraydah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Yuna.html'">
+
+  <div class="img-box">
+    <img src="Yuna1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Yuna</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 27 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Al Khobar, Saudi Arabia </div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Victoria.html'">
+
+  <div class="img-box">
+    <img src="Victoria1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Victoria</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 21 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Hail, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Limizi.html'">
+
+  <div class="img-box">
+    <img src="Limizi1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Limizi</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 25 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Riyadh, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Mohina.html'">
+
+  <div class="img-box">
+    <img src="Mohina1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Mohina</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 24 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Abha, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Nahra.html'">
+
+  <div class="img-box">
+    <img src="Nahra1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Nahra</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 25 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Al Hofuf, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Fiona.html'">
+
+  <div class="img-box">
+    <img src="Fiona1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Fiona</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 26 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Dammam, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Cherry.html'">
+
+  <div class="img-box">
+    <img src="Cherry1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Cherry</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 22 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Jubail, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Evelin.html'">
+
+  <div class="img-box">
+    <img src="Evelin1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Evelin</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 24 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Buraydah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Komal.html'">
+
+  <div class="img-box">
+    <img src="Komal1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Komal</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 29 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Riyadh, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Lucia.html'">
+
+  <div class="img-box">
+    <img src="Lucia1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Lucia</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 28 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Jeddah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Maya.html'">
+
+  <div class="img-box">
+    <img src="Maya1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Maya</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 27 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Dammam, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Marina.html'">
+
+  <div class="img-box">
+    <img src="Marina1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Marina</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 23 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Abha, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Medoly.html'">
+
+  <div class="img-box">
+    <img src="Medoly1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Medoly</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 25 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Riyadh, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Olivian.html'">
+
+  <div class="img-box">
+    <img src="Olivian1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Olivian</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 24 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Jubail, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Sorina.html'">
+
+  <div class="img-box">
+    <img src="Sorina1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Sorina</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 27 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Hail, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Candy.html'">
+
+  <div class="img-box">
+    <img src="Candy1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Candy</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 22 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Jeddah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Mailisami.html'">
+
+  <div class="img-box">
+    <img src="Mailisami1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Mailisami</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 21 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Buraydah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Serena.html'">
+
+  <div class="img-box">
+    <img src="Serena1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Serena</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 22 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Abha, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Lena.html'">
+
+  <div class="img-box">
+    <img src="Lena1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Lena</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 29 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Al Khobar, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Amara.html'">
+
+  <div class="img-box">
+    <img src="Amara1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Amara</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 27 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Jubail, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Essie.html'">
+
+  <div class="img-box">
+    <img src="Essie1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Essie</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 21 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Jeddah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Bella.html'">
+
+  <div class="img-box">
+    <img src="Bella1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Bella</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 25 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Al Hofuf, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Nanika.html'">
+
+  <div class="img-box">
+    <img src="Nanika1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Nanika</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 23 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Jeddah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Sabrina.html'">
+
+  <div class="img-box">
+    <img src="Sabrina1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Sabrina</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 26 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Riyadh, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Emma.html'">
+
+  <div class="img-box">
+    <img src="Emma1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Emma</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 27 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Abha, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Rosie.html'">
+
+  <div class="img-box">
+    <img src="Rosie1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Rosie</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 29 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Buraydah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Darlina.html'">
+
+  <div class="img-box">
+    <img src="Darlina1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Darlina</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 28 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Dammam, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Estrella.html'">
+
+  <div class="img-box">
+    <img src="Estrella1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Estrella</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 23 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Riyadh, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Rikka Japan.html'">
+
+  <div class="img-box">
+    <img src="Rikka Japan1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Rikka Japan</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 24 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Dammam, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Daciana.html'">
+
+  <div class="img-box">
+    <img src="Daciana1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Daciana</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 23 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Al Khobar, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Emily.html'">
+
+  <div class="img-box">
+    <img src="Emily1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Emily</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 21 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Buraydah, Saudi Arabia</div>
+  </div>
+
+</div>
+
+<div class="card" onclick="window.location='Brisa.html'">
+
+  <div class="img-box">
+    <img src="Brisa1.jpg">
+    <div class="gradient"></div>
+
+    <div class="top-bar">
+      <span class="verified">VERIFIED ✓</span>
+    </div>
+
+    <div class="premium">PREMIUM</div>
+  </div>
+
+<div class="info glass">
+  <div class="name">Brisa</div>
+
+  <div class="phone-row">
+    <span class="phone">👩 Female | 21 years old</span>
+
+    <div class="icons">
+
+        <!-- WhatsApp -->
+        <a href="https://api.whatsapp.com/send/?phone=971568816126"
+           target="_blank"
+           onclick="event.stopPropagation()"
+           class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="location">📍 Al Hofuf, Saudi Arabia</div>
+  </div>
+
+</div>
+
+    
+  </div>
+</div>
+    <div class="card">
+    </div>
+
+</div>
+
+
+  
+<script>
+function toggleDropdown(el, event) {
+    event.stopPropagation();
+
+    let current = el.nextElementSibling;
+
+    document.querySelectorAll(".dropdown-content").forEach(d => {
+        if (d !== current) {
+            d.style.display = "none";
+        }
+    });
+
+    current.style.display =
+        current.style.display === "block" ? "none" : "block";
+}
+
+document.addEventListener("click", function (e) {
+    document.querySelectorAll(".dropdown").forEach(drop => {
+        if (!drop.contains(e.target)) {
+            drop.querySelector(".dropdown-content").style.display = "none";
+        }
+    });
+});
+</script>
+<div class="pagination">
+
+  <a href="index.html">Previous</a>
+
+  <a href="index.html" class="active">1</a>
+  <a href="page2.html">2</a>
+  <a href="page3.html">3</a>
+  <a href="page4.html">4</a>
+  <a href="page5.html">5</a>
+
+  <span>...</span>
+
+  <a href="page9.html">9</a>
+  <a href="page10.html">10</a>
+
+  <a href="page2.html">Next</a>
+
+</div>
+</body>
+</html>

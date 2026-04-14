@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gallery Xịn</title>
+<head>
+    <title>Gallery Xin</title>
+
+    <!-- 🔥 DÁN Ở ĐÂY -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+<style>
+body {
+    background: #111;
+    color: white;
+    font-family: Arial;
+    font-size: 18px; /* 🔥 tăng lên */
+}
+
+/* LAYOUT */
+.container {
+    display: flex;
+    gap: 30px;
+    padding: 10px 265px; /* 🔥 giảm từ 50px → 10px */
+}
+
+.left {
+    width: 59%;
+}
+
+/* GALLERY */
+.gallery {
+    text-align: center;
+}
+
+.main-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+
+    overflow: hidden; /* ✅ BẮT BUỘC phải là hidden */
+
+    background: black;
+}
+.main-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+background: black;
+
+    border-radius: 12px;
+    border: 3px solid #ff2d8d;
+    box-sizing: border-box;
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    will-change: opacity;
+}
+
+.main-img.active {
+    opacity: 1;
+}
+    background: black;
+
+    border-radius: 12px;
+    border: 5px solid #ff2d8d;
+    box-shadow: 0 0 20px rgba(255, 45, 141, 0.5);
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* ảnh đang hiển thị */
+.main-img.active {
+    opacity: 1;
+}
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.nav:hover {
+    background: hotpink;
+}
+
+/* THUMB */
+.thumbs {
+    display: grid;
+    grid-template-columns: repeat(5, 90px); /* 🔥 mỗi ô cố định 90px */
+    justify-content: center; /* 🔥 căn giữa lại */
+    gap: 11px;
+    margin-top: 15px;
+}
+
+.thumbs img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.thumbs img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.thumbs img.active {
+    border: 3px solid hotpink;
+    opacity: 1;
+}
+.main-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    height: 660px;
+    overflow: hidden;
+    background: black;
+    touch-action: pan-y;
+}
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.info span {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 8px 12px;
+    border-radius: 20px;
+
+    background: #f1f3f6;
+    border: 1px solid #ddd;
+
+    font-size: 14px;
+    color: #333;
+
+    transition: 0.2s; /* 🔥 thêm dòng này */
+}
+.info span:hover {
+    background: #e9edf3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.info span:active {
+    transform: translateY(0px) scale(0.97);
+}
+    border: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 🔥 phần chữ bên trái đậm */
+.info span strong {
+    font-weight: 700;
+    margin-right: 5px;
+}
+.info span i {
+    font-style: normal; /* 🔥 bỏ nghiêng */
+}
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.info span {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 10px 16px;
+    border-radius: 12px;
+
+    background: #f1f3f6;
+    border: 1px solid #e0e0e0;
+
+    font-size: 15px;
+    color: #333;
+}
+
+/* chữ bên trái */
+.info span b {
+    font-weight: 700;
+    margin-right: 6px; /* 🔥 khoảng cách sau dấu : */
+}
+.info span {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+
+.info span:hover {
+    background: #e9edf3;
+}
+.actions {
+    display: flex;
+    gap: 25px;
+    margin: 29px 0;
+    justify-content: flex-start; /* 🔥 thêm dòng này */
+}
+
+.btn {
+    display: inline-flex;   /* 🔥 đổi từ flex → inline-flex */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px 20px;     /* 🔥 giảm padding cho gọn */
+    border-radius: 15px;
+
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+
+    white-space: nowrap;    /* 🔥 QUAN TRỌNG: không xuống dòng */
+    min-width: 180px;       /* 🔥 3 nút bằng nhau */
+
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* 📞 CALL */
+.call {
+    background: linear-gradient(45deg, #ff4d8d, #a64bf4);
+}
+
+/* 🟢 WHATSAPP */
+.whatsapp {
+    background: linear-gradient(45deg, #25D366, #1ebe5d);
+}
+
+/* ✈ TELEGRAM */
+.telegram {
+    background: linear-gradient(45deg, #1da1f2, #0077b5);
+}
+.btn i {
+    font-size: 23px;
+}
+.desc {
+    font-size: 19px;      /* 🔥 chữ to hơn */
+    line-height: 1.6;     /* 🔥 dễ đọc */
+    color: #444;          /* mềm mắt */
+    margin-top: 10px;
+}
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+
+    max-width: 2900px; /* 🔥 chỉnh số này để ra 3 hàng */
+}
+.services span {
+    padding: 8px 12px;
+    border-radius: 20px;
+
+    background: #f1f3f6;
+    border: 1px solid #ddd;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition: 0.2s; /* 🔥 thêm vào đây */
+}
+.services span:hover {
+    background: #e9edf3;
+    transform: translateY(-1px);
+}
+/* 🔥 hiệu ứng chung cho tất cả item clickable */
+.ui-hover {
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.ui-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.ui-hover:active {
+    transform: translateY(0px) scale(0.97);
+}
+.info span,
+.services span,
+.btn {
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.info span:hover,
+.services span:hover,
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.info span:active,
+.services span:active,
+.btn:active {
+    transform: translateY(0px) scale(0.97);
+}
+.btn:hover {
+    filter: brightness(1.1);
+}
+.services span:hover {
+    filter: brightness(0.97);
+}
+.rate-box {
+    background: #f8f9fb;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    max-width: 700px;  /* 🔥 giới hạn đẹp */
+    margin: 30px 85px 30px auto;
+
+    padding: 15px;
+    overflow: hidden;
+}
+
+.rate-note {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.price-table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #333;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.15); /* 🔥 thêm ở đây */
+}
+/* 🔥 VIỀN NGANG ĐẬM */
+.price-table th,
+.price-table td {
+    padding: 12px;
+    border-bottom: 2px solid #333;
+}
+
+/* 🔥 VIỀN DỌC NHẸ */
+.price-table th + th,
+.price-table td + td {
+    border-left: 1px solid #aaa;
+}
+
+/* HEADER */
+.price-table th {
+    background: #f8fafc;
+    font-weight: 600;
+}
+
+.price-table th {
+    background: #f8fafc;
+    font-weight: 600;
+}
+
+
+.price-table tr:hover td {
+    background: #f1f3f6;
+}
+.rate-title {
+    background: #f3f4f6;
+    padding: 14px 20px;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    border-bottom: 1px solid #ddd;
+
+    margin: 0;
+}
+.rate-note,
+.price-table {
+    padding: 0;   /* 🔥 bỏ padding gây lệch */
+}
+.rate-title {
+    background: #f3f4f6;
+    padding: 14px 20px;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    margin: 0; /* 🔥 không lệch nữa */
+
+    border-bottom: 1px solid #ddd;
+}
+/* KHUNG NGOÀI */
+.rate-box {
+    background: #f8f9fb;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    padding: 0;            /* 🔥 bỏ padding */padding: 20px; 
+    overflow: hidden;      /* 🔥 QUAN TRỌNG NHẤT */
+}
+.rate-note {
+    padding: 2px 18px;   /* 🔥 giảm trên dưới */
+    margin: 5px 0;       /* 🔥 giảm khoảng cách */
+    font-size: 18px;     /* giữ nguyên */
+    color: #666;
+}
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+}    border-collapse: collapse;
+}
+
+/* HEADER TABLE */
+.price-table th {
+    background: #fafafa;
+    text-align: left;
+    font-weight: 600;
+
+    padding: 12px;
+    border-bottom: 2px solid #333;
+}
+
+/* CELL */
+.price-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+#viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.9);
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* ảnh */
+#viewer img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+}
+
+/* zoom */
+#viewer img.zoomed {
+    transform: scale(2);
+    cursor: zoom-out;
+}
+
+/* nút X */
+#viewer .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+#viewer img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+}
+
+#viewer img.zoomed {
+    transform: scale(2); /* 🔥 zoom gấp 2 */
+    cursor: zoom-out;
+}
+
+.main-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;   /* 🔥 FIX VIỀN ĐEN */
+    
+    cursor: zoom-in;
+    transition: transform 0.4s ease;
+}
+
+.main-img.zoomed {
+    transform: scale(2); /* chỉnh 2 → 2.5 nếu muốn zoom mạnh hơn */
+    cursor: zoom-out;
+    z-index: 10;
+}
+.viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.95);
+    display: none;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ảnh lớn */
+#viewerImg {
+    max-width: 90%;
+    max-height: 75%;
+    border-radius: 12px;
+}
+
+/* 🔥 thanh ảnh dưới */
+.viewer-thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+/* ảnh nhỏ */
+.viewer-thumbs img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+
+    border-radius: 8px;
+    opacity: 0.4;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+/* hover */
+.viewer-thumbs img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ảnh đang chọn */
+.viewer-thumbs img.active {
+    opacity: 1;
+    border: 2px solid hotpink;
+}
+.right {
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: 70px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.left {
+    margin-top: 0;
+}
+
+.top-nav {
+    margin-bottom: 15px;
+}
+
+.top-nav .back {
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    padding: 6px 14px;     /* 🔥 tăng size nút */
+    border-radius: 10px;
+
+    font-size: 20px;       /* 🔥 chữ to hơn */
+    font-weight: 500;
+
+    background: #e91e63;
+    color: white;
+    border: 2px solid #e91e63;
+    transform: translateY(0);
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+.top-nav .back:hover {
+    background: #ff2a6d;
+    color: white;
+
+    transform: translateY(-1px); /* 🔥 chỉ nhích 1px thôi */
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+.top-nav .back:active {
+    transform: translateY(0); /* 🔥 không bị nhún sâu */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.top-nav .back:active {
+    transform: scale(0.95);
+}
+.top-nav .breadcrumb {
+    font-family: 'Poppins', sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+top: 7px;
+    background: linear-gradient(
+        90deg,
+        #ff4d6d,   /* đỏ dịu */
+        #ff7a00,   /* cam */
+        #ffaa00,   /* vàng đậm hơn */
+        #38b000,   /* xanh lá đậm */
+        #0096c7,   /* xanh dương */
+        #5a189a    /* tím đậm */
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@keyframes rainbowMove {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+.top-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px; /* 🔥 khoảng cách giữa 2 dòng */
+}
+.header {
+  width: 100%;
+  background: #000000;
+  border-bottom: 1px solid #ddd;
+
+.header {
+  height: 65px;          /* 🔥 chiều cao chuẩn */
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: auto;
+
+  height: 100%;              /* 🔥 ăn theo header */
+  padding: 0 25px;           /* 🔥 chỉ padding ngang */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-left: -80px;   /* 🔥 tạo khoảng cách */
+}
+
+.logo img {
+  width: 130px;
+}
+
+.logo span {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+/* MENU */
+.menu {
+  display: flex;
+  gap: 50px;
+}
+
+.menu a {
+    display: inline-block;   /* 🔥 đổi về inline-block */
+    width: fit-content;      /* 🔥 QUAN TRỌNG */
+
+    padding: 6px 12px;
+    border-radius: 8px;
+
+    text-decoration: none;
+    color: #555;
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.25s;
+}
+
+.menu a:hover {
+  color: #e91e63;
+}
+
+/* LOGIN BUTTON */
+.menu .login {
+  background: #eee;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.auth a {
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 0.8px; /* 👈 tăng khoảng cách chữ */
+}
+
+.register {
+  background: orange;
+  color: white;
+}
+
+.login {
+  background: red;
+  color: white;
+}
+.menu a {
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  font-size: 19px;
+  padding: 5px 0;
+  transition: 0.3s;
+}
+
+/* 🔥 hover đổi màu */
+.menu a:hover {
+  color: #e91e63;
+}
+
+/* 🔥 gạch dưới chạy */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+
+  width: 0%;
+  max-width: 100%;
+  height: 2px;
+  background: #e91e63;
+
+  transition: 0.3s;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+.menu a:active {
+  transform: scale(0.95);
+}
+.menu .login,
+.menu .register {
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: 0.25s;
+}
+.menu .register {
+  background: linear-gradient(45deg, #ffa726, #fb8c00);
+  color: white;
+
+  padding: 8px 18px;
+  border-radius: 999px;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+  transition: all 0.25s ease;
+}
+
+.menu .register:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  filter: brightness(1.05);
+}
+
+/* LOGIN */
+.menu .login {
+  background: red;
+  color: white;
+}
+
+.menu .login:hover {
+  background: #e60000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+/* CLICK */
+.menu .login:active,
+.menu .register:active {
+  transform: scale(0.95);
+}
+.header {
+  transition: 0.3s;
+}
+
+.header:hover {
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.auth {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.auth a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 18px;
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+
+  transition: all 0.25s ease;
+  cursor: pointer;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  will-change: transform;
+}
+
+.register {
+  background: linear-gradient(45deg, #ffb300, #ff8f00);
+}
+
+.login {
+  background: linear-gradient(45deg, #ff3d00, #ff1744);
+}
+
+.auth a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  filter: brightness(1.05);
+}
+
+.auth a:active {
+  transform: scale(0.92);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.auth {
+  display: flex;
+  gap: 10px;
+}
+.menu {
+    align-items: center;
+}
+/* ===== FIX LOGO IMAGE ===== */
+.logo img {
+  width: 180px;        /* chỉnh size logo */
+  height: auto;
+  filter: brightness(1.2) contrast(1.1);
+  transition: 0.3s;
+}
+
+/* hover xịn */
+.logo img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.3) drop-shadow(0 0 10px #ff4da6);
+}
+header a,
+.menu a,
+.nav a,
+.header a {
+  color: #fff !important;
+}
+header a:hover,
+.menu a:hover,
+.nav a:hover,
+.header a:hover {
+  color: #ff4da6 !important;
+}
+</style>
+</head>
+
+<body>
+<div class="header">
+  <div class="header-container">
+
+<div class="logo">
+  <img src="logo.png" alt="Spice Dubai">
+</div>
+
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="#">Escorts</a>
+      <a href="#">Agencies</a>
+      <a href="escortreviews.html">Escort Reviews</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="auth">
+      <a class="register">Register</a>
+      <a class="login">Login</a>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+<div class="container">
+
+    <!-- BÊN TRÁI -->
+    <div class="left">
+        <div class="top-nav">
+    <a href="index.html" class="back">← Back to search</a>
+    <div class="breadcrumb">Escort Saudi Arabia: Choose the Best Escort</div>
+</div>
+        <div class="gallery">
+
+            <div class="main-wrapper">
+
+        <button class="nav prev" onclick="prevImg()">❮</button>
+    <button class="nav next" onclick="nextImg()">❯</button>
+
+<img id="img1" src="anna1.jpg" class="main-img active" onclick="openViewer(this.src)">
+<img id="img2" src="anna1.jpg" class="main-img" onclick="openViewer(this.src)">
+
+    <!-- 🔍 ICON KÍNH LÚP -->
+    <div class="zoom-btn" onclick="openViewer(getCurrentImg())">
+        🔍
+    </div>
+
+        <button class="nav prev" onclick="prevImg()">❮</button>
+    <button class="nav next" onclick="nextImg()">❯</button>
+
+</div>
+
+            <div class="thumbs" id="thumbs"></div>
+
+        </div>
+    </div>
+
+    <!-- BÊN PHẢI -->
+    <div class="right">
+
+        <h1 class="title">Estrella</h1>
+        <div class="info">
+  <span>🎂 <b>Age:</b> 23</span>
+  <span>📍 <b>Location:</b> Riyadh, Saudi Arabia</span>
+  <span>📏 <b>Height:</b> 168</span>
+  <span>⚖️ <b>Weight:</b> 52</span>
+  <span>🌍 <b>Nationality:</b> European</span>
+  <span>🔥 <b>Boobs:</b> Very Large (D)</span>
+  <span>🗣️ <b>Language:</b> English</span>
+</div>
+
+<div class="actions">
+  <a href="tel:+447352915430" class="btn call">📞 +447352915430</a>
+  <a href="#" class="btn whatsapp">
+  <i class="fa-brands fa-whatsapp"></i>
+  +447352915430
+</a>
+
+<a href="#" class="btn telegram">
+  <i class="fa-brands fa-telegram"></i>
+</a>
+</div>
+
+<p class="desc" style="color: #000; font-weight: 500;">
+  Hi I’m Estrella. 23 year old Female escort from Saudi Arabia.
+Kind generous gentlemen: Come relax with me and I’ll take care of ALL your sexy needs… I offer you all sexy services with a big smile.. I’m 100 percent friendly, professional, nice, nasty, sexy girl. Come play with me!”
+
+I love squirting I wanna fulfill your widest sexual fantasies I’II satisfy you with my full services such as oral, doggy, hardcore.
+
+I’m honest and sincere lady you’ll ever love to meet ❤️ & I’m available all day and night for incall and outcall.,
+text me for rate and unforgettable experience.
+I respond almost immediately! Contact me anytime.
+</p>
+        <h2>Services</h2>
+<div class="services">
+  <span>OWO (Oral without condom)</span>
+  <span>O-Level (Oral sex)</span>
+  <span>DFK (Deep french kissing)</span>
+  <span>69 (69 sex position)</span>
+
+  <span>Erotic massage</span>
+  <span>GFE (Girlfriend experience)</span>
+  <span>Extraball (Having sex multiple times)</span>
+
+  <span class="last">LT (Long Time; Usually overnight)</span>
+</div>
+
+<div class="rate-box">
+    <h2 class="rate-title">Rates (AED)</h2>
+
+<p class="rate-note" style="font-size: 17px; color: #000; font-weight: 500;">
+  Addon duration examples: 1 Hour, 2 Hours, 3 Hours.
+</p>
+
+<table class="price-table">
+    <tr>
+        <th>Addon duration</th>
+        <th>Incall</th>
+        <th>Outcall</th>
+    </tr>
+    <tr>
+        <td>1 Hour</td>
+        <td>400 AED</td>
+        <td>450 AED</td>
+    </tr>
+    <tr>
+        <td>2 Hour</td>
+        <td>500 AED</td>
+        <td>550 AED</td>
+    </tr>
+    <tr>
+        <td>3 Hour</td>
+        <td>800 AED</td>
+        <td>850 AED</td>
+    </tr>
+</table>
+</div>
+
+    </div>
+
+</div>
+
+</div> <!-- right -->
+
+</div> <!-- container -->
+
+<script>
+// =======================
+// ✅ DATA
+// =======================
+const images = [
+    "Estrella1.jpg",
+    "Estrella2.jpg",
+    "Estrella3.jpg",
+    "Estrella4.jpg",
+    "Estrella5.jpg",
+    "Estrella6.jpg",
+    "Estrella7.jpg",
+    "Estrella8.jpg",
+    "Estrella9.jpg"
+];
+
+// =======================
+// ✅ STATE
+// =======================
+let currentIndex = 0;
+let autoSlide = null;
+let currentImg = 1;
+
+// =======================
+// ✅ DOM
+// =======================
+const thumbsContainer = document.getElementById("thumbs");
+const img1 = document.getElementById("img1");
+const img2 = document.getElementById("img2");
+
+// =======================
+// ✅ CREATE THUMBS
+// =======================
+images.forEach((img, index) => {
+    const el = document.createElement("img");
+    el.src = img;
+
+    el.onclick = () => {
+        stopAutoSlide();        // 🔥 dừng khi user click
+        showImg(index);
+        startAutoSlide();       // 🔥 chạy lại
+    };
+
+    if (index === 0) el.classList.add("active");
+
+    thumbsContainer.appendChild(el);
+});
+
+// =======================
+// ✅ GET THUMBS
+// =======================
+function getThumbs() {
+    return document.querySelectorAll(".thumbs img");
+}
+
+// =======================
+// ✅ SHOW IMAGE (CORE)
+// =======================
+function showImg(index) {
+    const thumbs = getThumbs();
+
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+
+    currentIndex = index;
+
+    const active = currentImg === 1 ? img1 : img2;
+    const next = currentImg === 1 ? img2 : img1;
+
+    next.src = images[index];
+
+    next.classList.add("active");
+    active.classList.remove("active");
+
+    currentImg = currentImg === 1 ? 2 : 1;
+
+    thumbs.forEach(i => i.classList.remove("active"));
+    thumbs[index].classList.add("active");
+}
+
+// =======================
+// ✅ NEXT / PREV
+// =======================
+function nextImg() {
+    showImg(currentIndex + 1);
+}
+
+function prevImg() {
+    showImg(currentIndex - 1);
+}
+
+// =======================
+// ✅ AUTO SLIDE
+// =======================
+function startAutoSlide() {
+    autoSlide = setInterval(() => {
+        showImg(currentIndex + 1);
+    }, 5000);
+}
+
+function stopAutoSlide() {
+    clearInterval(autoSlide);
+}
+
+// =======================
+// ✅ CLICK MAIN IMAGE
+// =======================
+img1.onclick = () => {
+    openViewer(images[currentIndex]);
+};
+
+img2.onclick = () => {
+    openViewer(images[currentIndex]);
+};
+
+// =======================
+// ✅ VIEWER
+// =======================
+function openViewer(src) {
+    const viewer = document.getElementById("viewer");
+    const img = document.getElementById("viewerImg");
+
+    img.src = src;
+    viewer.style.display = "flex";
+}
+
+function closeViewer() {
+    document.getElementById("viewer").style.display = "none";
+}
+
+// =======================
+// ✅ SWIPE MOBILE
+// =======================
+let startX = 0;
+let endX = 0;
+
+const mainWrapper = document.querySelector(".main-wrapper");
+
+mainWrapper.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+});
+
+mainWrapper.addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    let diff = startX - endX;
+
+    if (Math.abs(diff) < 50) return;
+
+    if (diff > 0) {
+        nextImg();
+    } else {
+        prevImg();
+    }
+}
+
+// =======================
+// ✅ START
+// =======================
+showImg(0);
+startAutoSlide();
+</script>
+<div id="viewer" onclick="closeViewer()">
+
+    <span class="close" onclick="closeViewer()">✕</span>
+
+    <!-- ẢNH LỚN -->
+    <img id="viewerImg" onclick="event.stopPropagation()">
+
+    <!-- 🔥 THUMB BÊN DƯỚI -->
+    <div id="viewerThumbs" class="viewer-thumbs" onclick="event.stopPropagation()"></div>
+
+</div>
+
+</body>
+</html>
