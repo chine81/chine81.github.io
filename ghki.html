@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escort Profile</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff; /* 🔥 nền trắng */
+  color: #000;      /* chữ đen */
+}
+
+/* CONTAINER */
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* LEFT - GALLERY */
+.left {
+  width: 60%;
+}
+
+.main-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.main-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+/* NAV */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* THUMBS */
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumbs img {
+  width: 100%;
+  height: 100px; /* 🔥 tăng lên cho rõ */
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+
+  filter: brightness(1.1) contrast(1.1); /* 🔥 làm ảnh nét hơn */
+  transition: 0.3s;
+}
+
+/* RIGHT */
+.right {
+  width: 40%;
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: hotpink;
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.info span {
+  background: #fff; /* 🔥 trắng */
+  color: #000;
+
+  padding: 10px 14px;
+
+  border-radius: 6px; /* 🔥 vuông hơn (trước 12px) */
+
+  border: 1px solid #ddd; /* viền nhẹ */
+
+  font-size: 14px;
+}
+
+.desc {
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+/* BUTTONS */
+.actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+.whatsapp { background: #25D366; }
+.call { background: hotpink; }
+
+/* STICKY WHATSAPP */
+.sticky-wa {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  z-index: 999;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .left, .right {
+    width: 100%;
+  }
+
+.main-wrapper {
+  height: 600px; /* 🔥 kéo dài */
+}
+
+  .thumbs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+}
+/* MAIN IMAGE */
+.main-wrapper {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #000;
+}
+
+.main-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.main-img.active {
+  opacity: 1;
+}
+
+/* NAV */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* THUMBS */
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumbs img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.thumbs img.active {
+  opacity: 1;
+  border: 2px solid hotpink;
+}
+.thumbs img {
+  opacity: 0.7;
+}
+
+.thumbs img.active {
+  opacity: 1;
+  border: 2px solid hotpink;
+  transform: scale(1.05);
+}
+/* MAIN IMAGE */
+.main-wrapper {
+  position: relative;
+  width: 100%;
+  height: 65vh; /* 🔥 auto theo màn */
+  max-height: 650px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #000;
+}
+
+.main-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.main-img.active {
+  opacity: 1;
+}
+
+/* NAV */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* THUMB SCROLL NGANG */
+.thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+
+  overflow-x: auto; /* 🔥 scroll ngang */
+  padding-bottom: 5px;
+}
+
+/* Ẩn thanh scroll */
+.thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+/* THUMB ITEM */
+.thumbs img {
+  min-width: 90px;
+  height: 90px;
+
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+/* ACTIVE */
+.thumbs img.active {
+  opacity: 1;
+  border: 3px solid hotpink;
+  transform: scale(1.08);
+}
+
+/* HOVER */
+.thumbs img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+/* HEADER */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #f2f2f2;
+  padding: 15px 20px;
+
+  border-bottom: 1px solid #ddd;
+}
+
+/* logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+}
+
+.logo span {
+  font-weight: bold;
+  color: #e91e63;
+}
+
+/* menu */
+.menu-btn {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.sub-header {
+  padding: 10px 20px;
+  background: #fafafa;
+  border-bottom: 1px solid #ddd;
+}
+
+/* hàng trên */
+.row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* back */
+.back {
+  color: #e91e63;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* buttons */
+.nav-btns button {
+  padding: 6px 12px;
+  margin-left: 5px;
+
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* breadcrumb */
+.breadcrumb {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.home {
+  color: #e91e63;
+  text-decoration: none;
+}
+
+.current {
+  color: #000;
+}
+/* container */
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* từng item */
+.services span {
+  display: inline-block; /* 🔥 QUAN TRỌNG */
+
+  background: #f1f1f1;
+  padding: 8px 14px;
+
+  border-radius: 20px;
+  border: 1px solid #ddd;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+.rates-box {
+  margin: 20px auto;
+max-width: 400px;
+  width: 100%;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* title */
+.rates-title {
+  padding: 12px 15px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  background: #f5f5f5;
+}
+
+/* desc */
+.rates-desc {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* table */
+.rates-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* header */
+.rates-table th {
+  text-align: left;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  border-bottom: 2px solid #000;
+}
+
+/* cell */
+.rates-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* zebra */
+.rates-table tr:nth-child(even) {
+  background: #fafafa;
+}
+.rates-box {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.rates-desc {
+  padding: 10px 15px;
+}
+.main-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  top: 0;
+  left: 0;
+
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* ảnh hiện tại */
+.img.active {
+  transform: translateX(0);
+  z-index: 2;
+}
+
+/* ảnh chuẩn bị vào */
+.img.next {
+  transform: translateX(100%);
+  z-index: 3;
+}
+
+/* hiệu ứng trượt */
+.img.slide-in {
+  transform: translateX(0);
+}
+
+.img.slide-out {
+  transform: translateX(-100%);
+}
+.slider {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.slider-track img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+</style>
+</head>
+
+<body>
+<div class="top-header">
+
+  <!-- logo -->
+  <div class="logo">
+    <img src="logo.png" alt="logo">
+    <span>EuroGirls Dubai</span>
+  </div>
+
+  <!-- menu icon -->
+  <div class="menu-btn">
+    ☰
+  </div>
+
+</div>
+
+<div class="sub-header">
+
+  <!-- HÀNG 1 -->
+  <div class="row-top">
+    <a href="#" class="back">← Back to search</a>
+
+    <div class="nav-btns">
+      <button>« Previous</button>
+      <button>Next »</button>
+    </div>
+  </div>
+
+  <!-- HÀNG 2 -->
+  <div class="breadcrumb">
+    <a href="#" class="home">Home</a>
+    <span>/</span>
+    <span class="current">Mizi</span>
+  </div>
+
+</div>
+<div class="container">
+
+  <!-- LEFT -->
+  <div class="left">
+<div class="main-wrapper">
+  <button class="nav prev" onclick="prev()">❮</button>
+
+  <img id="mainImg" class="main-img active">
+  <img id="mainImg2" class="main-img">
+
+  <button class="nav next" onclick="next()">❯</button>
+</div>
+
+<div class="thumbs" id="thumbs"></div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="title">Sorina</div>
+
+<div class="info">
+  <span><b>Age:</b> 22</span>
+  <span><b>Location:</b> Sheikh Zayed Road</span>
+  <span><b>Height:</b> 168</span>
+  <span><b>Weight:</b> 54</span>
+  <span><b>Nationality:</b> Romania</span>
+  <span><b>Boobs:</b> C</span>
+  <span><b>Language:</b> English</span>
+</div>
+
+    <div class="actions">
+      <a href="#" class="btn call">Call</a>
+      <a href="#" class="btn whatsapp">WhatsApp</a>
+    </div>
+
+    <p class="desc">
+      I am a spontaneous, smooth sensual woman who likes to massage. Different massages are possible with different rates. I only work by appointment, you can always contact me by phone for questions, rates. Whatsapp is also possible, but only to make an appointment. Warm regards
+    </p>
+<!-- 🔥 SERVICES ĐẶT Ở ĐÂY -->
+  <h3 class="services-title">Services</h3>
+
+  <div class="services">
+    <span>OWO (Oral without condom)</span>
+    <span>O-Level (Oral sex)</span>
+    <span>CIM (Come in mouth)</span>
+    <span>COF (Come on face)</span>
+    <span>COB (Come on body)</span>
+    <span>Swallow</span>
+    <span>DFK (Deep french kissing)</span>
+    <span>A-Level (Anal sex)</span>
+    <span>Anal Rimming (licking anus)</span>
+    <span>69 (69 sex position)</span>
+    <span>Striptease/Lapdance</span>
+    <span>Erotic massage</span>
+    <span>Couples</span>
+    <span>GFE (Girlfriend experience)</span>
+    <span>Threesome</span>
+    <span>Foot fetish</span>
+    <span>Extraball (Having sex multiple times)</span>
+    <span>LT (Long Time, Usually overnight)</span>
+  </div>
+
+</div>
+  </div>
+<div class="rates-box">
+
+  <div class="rates-title">Rates (AED)</div>
+
+  <div class="rates-desc">
+    Addon duration examples: 1 Hour, 2 Hours, 3 Hours.
+  </div>
+
+  <table class="rates-table">
+    <thead>
+      <tr>
+        <th>Addon duration</th>
+        <th>Incall</th>
+        <th>Outcall</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>400 AED</td>
+        <td>450 AED</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>500 AED</td>
+        <td>550 AED</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>800 AED</td>
+        <td>850 AED</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+</div>
+
+<!-- STICKY BUTTON -->
+<div class="slider">
+  <div class="slider-track" id="sliderTrack">
+</div>
+
+<script>
+
+const images = [
+    "Limizi1.jpg",
+    "Limizi2.jpg",
+    "Limizi3.jpg",
+    "Limizi4.jpg",
+    "Limizi5.jpg",
+    "Limizi6.jpg",
+    "Limizi7.jpg",
+    "Limizi8.jpg",
+    "Limizi9.jpg",
+    "Limizi10.jpg"
+];
+
+let index = 0;
+let current = 1;
+
+const img1 = document.getElementById("mainImg");
+const img2 = document.getElementById("mainImg2");
+const thumbs = document.getElementById("thumbs");
+
+/* preload */
+images.forEach(src => {
+  const i = new Image();
+  i.src = src;
+});
+
+/* create thumbs */
+images.forEach((src, i) => {
+  const t = document.createElement("img");
+  t.src = src;
+
+  t.onclick = () => show(i);
+
+  if (i === 0) t.classList.add("active");
+
+  thumbs.appendChild(t);
+});
+
+/* show */
+function show(i) {
+  index = i;
+
+  const active = current === 1 ? img1 : img2;
+  const next = current === 1 ? img2 : img1;
+
+  // chuẩn bị ảnh mới
+  next.src = images[i];
+  next.classList.add("next");
+
+  // reset
+  next.classList.remove("slide-in");
+  active.classList.remove("slide-out");
+
+  // force reflow
+  void next.offsetWidth;
+
+  // chạy animation
+  next.classList.add("slide-in");
+  active.classList.add("slide-out");
+
+  // swap
+  setTimeout(() => {
+    active.classList.remove("active", "slide-out");
+    next.classList.remove("next");
+    next.classList.add("active");
+
+    current = current === 1 ? 2 : 1;
+  }, 400);
+
+  // thumb active
+  const all = document.querySelectorAll(".thumbs img");
+  all.forEach(el => el.classList.remove("active"));
+  all[i].classList.add("active");
+}
+
+/* next prev */
+function next() {
+  show((index + 1) % images.length);
+}
+
+function prev() {
+  show((index - 1 + images.length) % images.length);
+}
+
+/* swipe mobile */
+let startX = 0;
+
+document.querySelector(".main-wrapper").addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.querySelector(".main-wrapper").addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+
+  if (startX - endX > 50) next();
+  if (endX - startX > 50) prev();
+});
+
+/* init */
+img1.src = images[0];
+img1.classList.add("active");
+let autoSlide = setInterval(() => {
+  next();
+}, 5000); // 🔥 5 giây
+const wrapper = document.querySelector(".main-wrapper");
+
+wrapper.addEventListener("touchstart", () => {
+  clearInterval(autoSlide);
+});
+
+wrapper.addEventListener("touchend", () => {
+  autoSlide = setInterval(() => {
+    next();
+  }, 5000);
+});
+
+</script>
+
+</script>
+
+</body>
+</html>
