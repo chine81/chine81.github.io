@@ -1,1246 +1,809 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-<title>Gallery Xịn</title>
-<head>
-    <title>Gallery Xin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escort Profile</title>
 
-    <!-- 🔥 DÁN Ở ĐÂY -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
 <style>
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background: #111;
-    color: white;
-    font-family: Arial;
-    font-size: 18px; /* 🔥 tăng lên */
+  background: #fff; /* 🔥 nền trắng */
+  color: #000;      /* chữ đen */
 }
 
-/* LAYOUT */
+/* CONTAINER */
 .container {
-    display: flex;
-    gap: 30px;
-    padding: 10px 265px; /* 🔥 giảm từ 50px → 10px */
+  display: flex;
+  gap: 20px;
+  padding: 20px;
 }
 
+/* LEFT - GALLERY */
 .left {
-    width: 59%;
-}
-
-/* GALLERY */
-.gallery {
-    text-align: center;
+  width: 60%;
 }
 
 .main-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    height: 500px;
-
-    overflow: hidden; /* ✅ BẮT BUỘC phải là hidden */
-
-    background: black;
-}
-.main-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-background: black;
-
-    border-radius: 12px;
-    border: 3px solid #ff2d8d;
-    box-sizing: border-box;
-
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    will-change: opacity;
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 15px;
 }
 
-.main-img.active {
-    opacity: 1;
-}
-    background: black;
-
-    border-radius: 12px;
-    border: 5px solid #ff2d8d;
-    box-shadow: 0 0 20px rgba(255, 45, 141, 0.5);
-
-    opacity: 0;
-    transition: opacity 0.5s ease;
+.main-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
 }
 
-/* ảnh đang hiển thị */
-.main-img.active {
-    opacity: 1;
-}
+/* NAV */
 .nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.prev {
-    left: 10px;
-}
+.prev { left: 10px; }
+.next { right: 10px; }
 
-.next {
-    right: 10px;
-}
-
-.nav:hover {
-    background: hotpink;
-}
-
-/* THUMB */
+/* THUMBS */
 .thumbs {
-    display: grid;
-    grid-template-columns: repeat(5, 90px); /* 🔥 mỗi ô cố định 90px */
-    justify-content: center; /* 🔥 căn giữa lại */
-    gap: 11px;
-    margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .thumbs img {
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    opacity: 1;
-    transition: 0.3s;
+  width: 100%;
+  height: 100px; /* 🔥 tăng lên cho rõ */
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+
+  filter: brightness(1.1) contrast(1.1); /* 🔥 làm ảnh nét hơn */
+  transition: 0.3s;
 }
 
-.thumbs img:hover {
-    opacity: 1;
-    transform: scale(1.05);
+/* RIGHT */
+.right {
+  width: 40%;
 }
 
-.thumbs img.active {
-    border: 3px solid hotpink;
-    opacity: 1;
+.title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: hotpink;
 }
-.main-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 700px;
-    margin: auto;
-    height: 660px;
-    overflow: hidden;
-    background: black;
-    touch-action: pan-y;
-}
+
 .info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .info span {
-    display: inline-flex;
-    align-items: center;
+  background: #fff; /* 🔥 trắng */
+  color: #000;
 
-    padding: 8px 12px;
-    border-radius: 20px;
+  padding: 10px 14px;
 
-    background: #f1f3f6;
-    border: 1px solid #ddd;
+  border-radius: 6px; /* 🔥 vuông hơn (trước 12px) */
 
-    font-size: 14px;
-    color: #333;
+  border: 1px solid #ddd; /* viền nhẹ */
 
-    transition: 0.2s; /* 🔥 thêm dòng này */
-}
-.info span:hover {
-    background: #e9edf3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-.info span:active {
-    transform: translateY(0px) scale(0.97);
-}
-    border: 1px solid #e0e0e0;
-    font-size: 14px;
-    color: #333;
+  font-size: 14px;
 }
 
-/* 🔥 phần chữ bên trái đậm */
-.info span strong {
-    font-weight: 700;
-    margin-right: 5px;
-}
-.info span i {
-    font-style: normal; /* 🔥 bỏ nghiêng */
-}
-.info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin: 20px 0;
-}
-
-.info span {
-    display: inline-flex;
-    align-items: center;
-
-    padding: 10px 16px;
-    border-radius: 12px;
-
-    background: #f1f3f6;
-    border: 1px solid #e0e0e0;
-
-    font-size: 15px;
-    color: #333;
-}
-
-/* chữ bên trái */
-.info span b {
-    font-weight: 700;
-    margin-right: 6px; /* 🔥 khoảng cách sau dấu : */
-}
-.info span {
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    transition: 0.2s;
-}
-
-.info span:hover {
-    background: #e9edf3;
-}
-.actions {
-    display: flex;
-    gap: 25px;
-    margin: 29px 0;
-    justify-content: flex-start; /* 🔥 thêm dòng này */
-}
-
-.btn {
-    display: inline-flex;   /* 🔥 đổi từ flex → inline-flex */
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-
-    padding: 12px 20px;     /* 🔥 giảm padding cho gọn */
-    border-radius: 15px;
-
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-
-    white-space: nowrap;    /* 🔥 QUAN TRỌNG: không xuống dòng */
-    min-width: 180px;       /* 🔥 3 nút bằng nhau */
-
-    transition: 0.2s;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-/* 📞 CALL */
-.call {
-    background: linear-gradient(45deg, #ff4d8d, #a64bf4);
-}
-
-/* 🟢 WHATSAPP */
-.whatsapp {
-    background: linear-gradient(45deg, #25D366, #1ebe5d);
-}
-
-/* ✈ TELEGRAM */
-.telegram {
-    background: linear-gradient(45deg, #1da1f2, #0077b5);
-}
-.btn i {
-    font-size: 23px;
-}
 .desc {
-    font-size: 19px;      /* 🔥 chữ to hơn */
-    line-height: 1.6;     /* 🔥 dễ đọc */
-    color: #444;          /* mềm mắt */
-    margin-top: 10px;
-}
-.services {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 11px;
-
-    max-width: 2900px; /* 🔥 chỉnh số này để ra 3 hàng */
-}
-.services span {
-    padding: 8px 12px;
-    border-radius: 20px;
-
-    background: #f1f3f6;
-    border: 1px solid #ddd;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    white-space: nowrap;
-
-    transition: 0.2s; /* 🔥 thêm vào đây */
-}
-.services span:hover {
-    background: #e9edf3;
-    transform: translateY(-1px);
-}
-/* 🔥 hiệu ứng chung cho tất cả item clickable */
-.ui-hover {
-    transition: 0.2s;
-    cursor: pointer;
+  margin-top: 15px;
+  line-height: 1.6;
 }
 
-.ui-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+/* BUTTONS */
+.actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
 }
 
-.ui-hover:active {
-    transform: translateY(0px) scale(0.97);
-}
-.info span,
-.services span,
 .btn {
-    transition: 0.2s;
-    cursor: pointer;
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
 }
 
-.info span:hover,
-.services span:hover,
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+.whatsapp { background: #25D366; }
+.call { background: hotpink; }
+
+/* STICKY WHATSAPP */
+.sticky-wa {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  z-index: 999;
 }
 
-.info span:active,
-.services span:active,
-.btn:active {
-    transform: translateY(0px) scale(0.97);
-}
-.btn:hover {
-    filter: brightness(1.1);
-}
-.services span:hover {
-    filter: brightness(0.97);
-}
-.rate-box {
-    background: #f8f9fb;
-    border: 1px solid #ddd;
-    border-radius: 12px;
+/* MOBILE */
+@media (max-width: 768px) {
 
-    max-width: 700px;  /* 🔥 giới hạn đẹp */
-    margin: 30px 85px 30px auto;
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
 
-    padding: 15px;
-    overflow: hidden;
-}
-
-.rate-note {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.price-table {
-    width: 50%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.price-table {
+  .left, .right {
     width: 100%;
-    border-collapse: collapse;
-    border: 2px solid #333;
+  }
 
-    box-shadow: 0 0 10px rgba(0,0,0,0.15); /* 🔥 thêm ở đây */
-}
-/* 🔥 VIỀN NGANG ĐẬM */
-.price-table th,
-.price-table td {
-    padding: 12px;
-    border-bottom: 2px solid #333;
+.main-wrapper {
+  height: 600px; /* 🔥 kéo dài */
 }
 
-/* 🔥 VIỀN DỌC NHẸ */
-.price-table th + th,
-.price-table td + td {
-    border-left: 1px solid #aaa;
+  .thumbs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
 }
-
-/* HEADER */
-.price-table th {
-    background: #f8fafc;
-    font-weight: 600;
-}
-
-.price-table th {
-    background: #f8fafc;
-    font-weight: 600;
-}
-
-
-.price-table tr:hover td {
-    background: #f1f3f6;
-}
-.rate-title {
-    background: #f3f4f6;
-    padding: 14px 20px;
-
-    font-size: 18px;
-    font-weight: 700;
-
-    border-bottom: 1px solid #ddd;
-
-    margin: 0;
-}
-.rate-note,
-.price-table {
-    padding: 0;   /* 🔥 bỏ padding gây lệch */
-}
-.rate-title {
-    background: #f3f4f6;
-    padding: 14px 20px;
-
-    font-size: 18px;
-    font-weight: 700;
-
-    margin: 0; /* 🔥 không lệch nữa */
-
-    border-bottom: 1px solid #ddd;
-}
-/* KHUNG NGOÀI */
-.rate-box {
-    background: #f8f9fb;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-
-    padding: 0;            /* 🔥 bỏ padding */padding: 20px; 
-    overflow: hidden;      /* 🔥 QUAN TRỌNG NHẤT */
-}
-.rate-note {
-    padding: 2px 18px;   /* 🔥 giảm trên dưới */
-    margin: 5px 0;       /* 🔥 giảm khoảng cách */
-    font-size: 18px;     /* giữ nguyên */
-    color: #666;
-}
-.price-table {
-    width: 100%;
-    border-collapse: collapse;
-}    border-collapse: collapse;
-}
-
-/* HEADER TABLE */
-.price-table th {
-    background: #fafafa;
-    text-align: left;
-    font-weight: 600;
-
-    padding: 12px;
-    border-bottom: 2px solid #333;
-}
-
-/* CELL */
-.price-table td {
-    padding: 12px;
-    border-bottom: 1px solid #eee;
-}
-#viewer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0,0,0,0.9);
-    display: none;
-
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-/* ảnh */
-#viewer img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 12px;
-
-    transition: transform 0.3s ease;
-    cursor: zoom-in;
-}
-
-/* zoom */
-#viewer img.zoomed {
-    transform: scale(2);
-    cursor: zoom-out;
-}
-
-/* nút X */
-#viewer .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
-    color: white;
-    cursor: pointer;
-}
-#viewer img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 12px;
-
-    transition: transform 0.3s ease;
-    cursor: zoom-in;
-}
-
-#viewer img.zoomed {
-    transform: scale(2); /* 🔥 zoom gấp 2 */
-    cursor: zoom-out;
+/* MAIN IMAGE */
+.main-wrapper {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #000;
 }
 
 .main-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;   /* 🔥 FIX VIỀN ĐEN */
-    
-    cursor: zoom-in;
-    transition: transform 0.4s ease;
-}
-
-.main-img.zoomed {
-    transform: scale(2); /* chỉnh 2 → 2.5 nếu muốn zoom mạnh hơn */
-    cursor: zoom-out;
-    z-index: 10;
-}
-.viewer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0,0,0,0.95);
-    display: none;
-
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* ảnh lớn */
-#viewerImg {
-    max-width: 90%;
-    max-height: 75%;
-    border-radius: 12px;
-}
-
-/* 🔥 thanh ảnh dưới */
-.viewer-thumbs {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    padding: 10px;
-    overflow-x: auto;
-}
-
-/* ảnh nhỏ */
-.viewer-thumbs img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-
-    border-radius: 8px;
-    opacity: 0.4;
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-/* hover */
-.viewer-thumbs img:hover {
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-/* ảnh đang chọn */
-.viewer-thumbs img.active {
-    opacity: 1;
-    border: 2px solid hotpink;
-}
-.right {
-    max-width: 100%;
-    overflow: hidden;
-    margin-top: 70px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-.left {
-    margin-top: 0;
-}
-
-.top-nav {
-    margin-bottom: 15px;
-}
-
-.top-nav .back {
-    display: inline-block;
-    position: relative;
-    top: 5px;
-    padding: 6px 14px;     /* 🔥 tăng size nút */
-    border-radius: 10px;
-
-    font-size: 20px;       /* 🔥 chữ to hơn */
-    font-weight: 500;
-
-    background: #e91e63;
-    color: white;
-    border: 2px solid #e91e63;
-    transform: translateY(0);
-    text-decoration: none;
-    transition: all 0.25s ease;
-}
-.top-nav .back:hover {
-    background: #ff2a6d;
-    color: white;
-
-    transform: translateY(-1px); /* 🔥 chỉ nhích 1px thôi */
-    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
-}
-.top-nav .back:active {
-    transform: translateY(0); /* 🔥 không bị nhún sâu */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-.top-nav .back:active {
-    transform: scale(0.95);
-}
-.top-nav .breadcrumb {
-    font-family: 'Poppins', sans-serif;
-    font-size: 21px;
-    font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    position: relative;
-top: 7px;
-    background: linear-gradient(
-        90deg,
-        #ff4d6d,   /* đỏ dịu */
-        #ff7a00,   /* cam */
-        #ffaa00,   /* vàng đậm hơn */
-        #38b000,   /* xanh lá đậm */
-        #0096c7,   /* xanh dương */
-        #5a189a    /* tím đậm */
-    );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-@keyframes rainbowMove {
-    0% { background-position: 0%; }
-    100% { background-position: 200%; }
-}
-.top-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 22px; /* 🔥 khoảng cách giữa 2 dòng */
-}
-.header {
+  position: absolute;
   width: 100%;
-  background: #000000;
-  border-bottom: 1px solid #ddd;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
 
-.header {
-  height: 65px;          /* 🔥 chiều cao chuẩn */
+.main-img.active {
+  opacity: 1;
+}
+
+/* NAV */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* THUMBS */
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumbs img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.thumbs img.active {
+  opacity: 1;
+  border: 2px solid hotpink;
+}
+.thumbs img {
+  opacity: 0.7;
+}
+
+.thumbs img.active {
+  opacity: 1;
+  border: 2px solid hotpink;
+  transform: scale(1.05);
+}
+/* MAIN IMAGE */
+.main-wrapper {
+  position: relative;
+  width: 100%;
+  height: 65vh; /* 🔥 auto theo màn */
+  max-height: 650px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #000;
+}
+
+.main-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.main-img.active {
+  opacity: 1;
+}
+
+/* NAV */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* THUMB SCROLL NGANG */
+.thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+
+  overflow-x: auto; /* 🔥 scroll ngang */
+  padding-bottom: 5px;
+}
+
+/* Ẩn thanh scroll */
+.thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+/* THUMB ITEM */
+.thumbs img {
+  min-width: 90px;
+  height: 90px;
+
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+/* ACTIVE */
+.thumbs img.active {
+  opacity: 1;
+  border: 3px solid hotpink;
+  transform: scale(1.08);
+}
+
+/* HOVER */
+.thumbs img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+/* HEADER */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #f2f2f2;
+  padding: 15px 20px;
+
+  border-bottom: 1px solid #ddd;
+}
+
+/* logo */
+.logo {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-.header-container {
-  max-width: 1200px;
-  margin: auto;
+.logo img {
+  width: 40px;
+}
 
-  height: 100%;              /* 🔥 ăn theo header */
-  padding: 0 25px;           /* 🔥 chỉ padding ngang */
+.logo span {
+  font-weight: bold;
+  color: #e91e63;
+}
 
+/* menu */
+.menu-btn {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.sub-header {
+  padding: 10px 20px;
+  background: #fafafa;
+  border-bottom: 1px solid #ddd;
+}
+
+/* hàng trên */
+.row-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* LOGO */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  margin-left: -80px;   /* 🔥 tạo khoảng cách */
-}
-
-.logo img {
-  width: 130px;
-}
-
-.logo span {
-  font-weight: bold;
-  font-size: 18px;
-  color: #333;
-}
-
-/* MENU */
-.menu {
-  display: flex;
-  gap: 50px;
-}
-
-.menu a {
-    display: inline-block;   /* 🔥 đổi về inline-block */
-    width: fit-content;      /* 🔥 QUAN TRỌNG */
-
-    padding: 6px 12px;
-    border-radius: 8px;
-
-    text-decoration: none;
-    color: #555;
-    font-size: 15px;
-    font-weight: 600;
-
-    transition: 0.25s;
-}
-
-.menu a:hover {
+/* back */
+.back {
   color: #e91e63;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-/* LOGIN BUTTON */
-.menu .login {
-  background: #eee;
-  padding: 5px 10px;
+/* buttons */
+.nav-btns button {
+  padding: 6px 12px;
+  margin-left: 5px;
+
+  border: 1px solid #ccc;
+  background: #fff;
   border-radius: 5px;
-}
-.auth a {
-  padding: 6px 14px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-size: 15px;
-  letter-spacing: 0.8px; /* 👈 tăng khoảng cách chữ */
-}
-
-.register {
-  background: orange;
-  color: white;
-}
-
-.login {
-  background: red;
-  color: white;
-}
-.menu a {
-  position: relative;
-  text-decoration: none;
-  color: #333;
-  font-size: 19px;
-  padding: 5px 0;
-  transition: 0.3s;
-}
-
-/* 🔥 hover đổi màu */
-.menu a:hover {
-  color: #e91e63;
-}
-
-/* 🔥 gạch dưới chạy */
-.menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-
-  width: 0%;
-  max-width: 100%;
-  height: 2px;
-  background: #e91e63;
-
-  transition: 0.3s;
-}
-
-.menu a:hover::after {
-  width: 100%;
-}
-.menu a:active {
-  transform: scale(0.95);
-}
-.menu .login,
-.menu .register {
-  padding: 6px 14px;
-  border-radius: 20px;
-  transition: 0.25s;
-}
-.menu .register {
-  background: linear-gradient(45deg, #ffa726, #fb8c00);
-  color: white;
-
-  padding: 8px 18px;
-  border-radius: 999px;
-
-  font-weight: 600;
-  font-size: 14px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-
-  transition: all 0.25s ease;
-}
-
-.menu .register:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  filter: brightness(1.05);
-}
-
-/* LOGIN */
-.menu .login {
-  background: red;
-  color: white;
-}
-
-.menu .login:hover {
-  background: #e60000;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
-}
-
-/* CLICK */
-.menu .login:active,
-.menu .register:active {
-  transform: scale(0.95);
-}
-.header {
-  transition: 0.3s;
-}
-
-.header:hover {
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-.auth {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.auth a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 8px 18px;
-  border-radius: 999px;
-
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  color: white;
-
-  transition: all 0.25s ease;
   cursor: pointer;
-
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  will-change: transform;
 }
 
-.register {
-  background: linear-gradient(45deg, #ffb300, #ff8f00);
+/* breadcrumb */
+.breadcrumb {
+  margin-top: 10px;
+  font-size: 14px;
 }
 
-.login {
-  background: linear-gradient(45deg, #ff3d00, #ff1744);
+.home {
+  color: #e91e63;
+  text-decoration: none;
 }
 
-.auth a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-  filter: brightness(1.05);
+.current {
+  color: #000;
 }
-
-.auth a:active {
-  transform: scale(0.92);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-.auth {
+/* container */
+.services {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-}
-.menu {
-    align-items: center;
-}
-/* ===== FIX LOGO IMAGE ===== */
-.logo img {
-  width: 180px;        /* chỉnh size logo */
-  height: auto;
-  filter: brightness(1.2) contrast(1.1);
-  transition: 0.3s;
+  margin-top: 10px;
 }
 
-/* hover xịn */
-.logo img:hover {
-  transform: scale(1.05);
-  filter: brightness(1.3) drop-shadow(0 0 10px #ff4da6);
+/* từng item */
+.services span {
+  display: inline-block; /* 🔥 QUAN TRỌNG */
+
+  background: #f1f1f1;
+  padding: 8px 14px;
+
+  border-radius: 20px;
+  border: 1px solid #ddd;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  white-space: nowrap;
 }
-header a,
-.menu a,
-.nav a,
-.header a {
-  color: #fff !important;
+.rates-box {
+  margin: 20px auto;
+max-width: 400px;
+  width: 100%;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
 }
-header a:hover,
-.menu a:hover,
-.nav a:hover,
-.header a:hover {
-  color: #ff4da6 !important;
+
+/* title */
+.rates-title {
+  padding: 12px 15px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  background: #f5f5f5;
+}
+
+/* desc */
+.rates-desc {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* table */
+.rates-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* header */
+.rates-table th {
+  text-align: left;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  border-bottom: 2px solid #000;
+}
+
+/* cell */
+.rates-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* zebra */
+.rates-table tr:nth-child(even) {
+  background: #fafafa;
+}
+.rates-box {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.rates-desc {
+  padding: 10px 15px;
+}
+.main-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  top: 0;
+  left: 0;
+
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* ảnh hiện tại */
+.img.active {
+  transform: translateX(0);
+  z-index: 2;
+}
+
+/* ảnh chuẩn bị vào */
+.img.next {
+  transform: translateX(100%);
+  z-index: 3;
+}
+
+/* hiệu ứng trượt */
+.img.slide-in {
+  transform: translateX(0);
+}
+
+.img.slide-out {
+  transform: translateX(-100%);
+}
+.slider {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.slider-track img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
 }
 </style>
 </head>
 
 <body>
-<div class="header">
-  <div class="header-container">
+<div class="top-header">
 
-<div class="logo">
-  <img src="logo.png" alt="Spice Dubai">
+  <!-- logo -->
+  <div class="logo">
+    <img src="logo.png" alt="logo">
+    <span>EuroGirls Dubai</span>
+  </div>
+
+  <!-- menu icon -->
+  <div class="menu-btn">
+    ☰
+  </div>
+
 </div>
 
-    <div class="menu">
-      <a href="index.html">Home</a>
-      <a href="#">Escorts</a>
-      <a href="#">Agencies</a>
-      <a href="escortreviews.html">Escort Reviews</a>
-      <a href="#">Contact</a>
+<div class="sub-header">
+
+  <!-- HÀNG 1 -->
+  <div class="row-top">
+    <a href="#" class="back">← Back to search</a>
+
+    <div class="nav-btns">
+      <button>« Previous</button>
+      <button>Next »</button>
     </div>
-
-    <div class="auth">
-      <a class="register">Register</a>
-      <a class="login">Login</a>
-    </div>
-
   </div>
-</div>
 
+  <!-- HÀNG 2 -->
+  <div class="breadcrumb">
+    <a href="#" class="home">Home</a>
+    <span>/</span>
+    <span class="current">Mizi</span>
   </div>
+
 </div>
 <div class="container">
 
-    <!-- BÊN TRÁI -->
-    <div class="left">
-        <div class="top-nav">
-    <a href="index.html" class="back">← Back to search</a>
-    <div class="breadcrumb">Escort Saudi Arabia: Choose the Best Escort</div>
+  <!-- LEFT -->
+  <div class="left">
+<div class="main-wrapper">
+  <button class="nav prev" onclick="prev()">❮</button>
+
+  <img id="mainImg" class="main-img active">
+  <img id="mainImg2" class="main-img">
+
+  <button class="nav next" onclick="next()">❯</button>
 </div>
-        <div class="gallery">
 
-            <div class="main-wrapper">
+<div class="thumbs" id="thumbs"></div>
+  </div>
 
-        <button class="nav prev" onclick="prevImg()">❮</button>
-    <button class="nav next" onclick="nextImg()">❯</button>
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="title">Sorina</div>
 
-<img id="img1" src="anna1.jpg" class="main-img active" onclick="openViewer(this.src)">
-<img id="img2" src="anna1.jpg" class="main-img" onclick="openViewer(this.src)">
+<div class="info">
+  <span><b>Age:</b> 22</span>
+  <span><b>Location:</b> Sheikh Zayed Road</span>
+  <span><b>Height:</b> 168</span>
+  <span><b>Weight:</b> 54</span>
+  <span><b>Nationality:</b> Romania</span>
+  <span><b>Boobs:</b> C</span>
+  <span><b>Language:</b> English</span>
+</div>
 
-    <!-- 🔍 ICON KÍNH LÚP -->
-    <div class="zoom-btn" onclick="openViewer(getCurrentImg())">
-        🔍
+    <div class="actions">
+      <a href="#" class="btn call">Call</a>
+      <a href="#" class="btn whatsapp">WhatsApp</a>
     </div>
 
-        <button class="nav prev" onclick="prevImg()">❮</button>
-    <button class="nav next" onclick="nextImg()">❯</button>
+    <p class="desc">
+      I am a spontaneous, smooth sensual woman who likes to massage. Different massages are possible with different rates. I only work by appointment, you can always contact me by phone for questions, rates. Whatsapp is also possible, but only to make an appointment. Warm regards
+    </p>
+<!-- 🔥 SERVICES ĐẶT Ở ĐÂY -->
+  <h3 class="services-title">Services</h3>
+
+  <div class="services">
+    <span>OWO (Oral without condom)</span>
+    <span>O-Level (Oral sex)</span>
+    <span>CIM (Come in mouth)</span>
+    <span>COF (Come on face)</span>
+    <span>COB (Come on body)</span>
+    <span>Swallow</span>
+    <span>DFK (Deep french kissing)</span>
+    <span>A-Level (Anal sex)</span>
+    <span>Anal Rimming (licking anus)</span>
+    <span>69 (69 sex position)</span>
+    <span>Striptease/Lapdance</span>
+    <span>Erotic massage</span>
+    <span>Couples</span>
+    <span>GFE (Girlfriend experience)</span>
+    <span>Threesome</span>
+    <span>Foot fetish</span>
+    <span>Extraball (Having sex multiple times)</span>
+    <span>LT (Long Time, Usually overnight)</span>
+  </div>
 
 </div>
+  </div>
+<div class="rates-box">
 
-            <div class="thumbs" id="thumbs"></div>
+  <div class="rates-title">Rates (AED)</div>
 
-        </div>
-    </div>
+  <div class="rates-desc">
+    Addon duration examples: 1 Hour, 2 Hours, 3 Hours.
+  </div>
 
-    <!-- BÊN PHẢI -->
-    <div class="right">
-
-        <h1 class="title">Amara</h1>
-        <div class="info">
-  <span>🎂 <b>Age:</b> 27</span>
-  <span>📍 <b>Location:</b> Jubail, Saudi Arabia</span>
-  <span>📏 <b>Height:</b> 167</span>
-  <span>⚖️ <b>Weight:</b> 55</span>
-  <span>🌍 <b>Nationality:</b> Croatian</span>
-  <span>🔥 <b>Boobs:</b> Very Large (D)</span>
-  <span>🗣️ <b>Language:</b> English</span>
-</div>
-
-<div class="actions">
-  <a href="tel:+447352915430" class="btn call">📞 +447352915430</a>
-  <a href="#" class="btn whatsapp">
-  <i class="fa-brands fa-whatsapp"></i>
-  +447352915430
-</a>
-
-<a href="#" class="btn telegram">
-  <i class="fa-brands fa-telegram"></i>
-</a>
-</div>
-
-<p class="desc" style="color: #000; font-weight: 500;">
-  Hi ! I’m Amara first time in Saudi Arabia. Gentlemen come to my site I work alone 👉 best service for gentlemen 😋 pussy licking 😘 kissing lips.Sucking no comdom 🍆💦💦.shared bath enjoy my best service 😋😋👌💦💦 bring happiness to you the feeling of missing me forever 💏👉And massage sex 🍆💦💦💦 will bring happiness and relieve stress in your work 😘 please contact me by WhatsApp number on ❤️😋😋 see you again 💋💋.
-</p>
-        <h2>Services</h2>
-<div class="services">
-  <span>OWO (Oral without condom)</span>
-  <span>O-Level (Oral sex)</span>
-  <span>DFK (Deep french kissing)</span>
-  <span>69 (69 sex position)</span>
-
-  <span>Erotic massage</span>
-  <span>GFE (Girlfriend experience)</span>
-  <span>Extraball (Having sex multiple times)</span>
-
-  <span class="last">LT (Long Time; Usually overnight)</span>
-</div>
-
-<div class="rate-box">
-    <h2 class="rate-title">Rates (AED)</h2>
-
-<p class="rate-note" style="font-size: 17px; color: #000; font-weight: 500;">
-  Addon duration examples: 1 Hour, 2 Hours, 3 Hours.
-</p>
-
-<table class="price-table">
-    <tr>
+  <table class="rates-table">
+    <thead>
+      <tr>
         <th>Addon duration</th>
         <th>Incall</th>
         <th>Outcall</th>
-    </tr>
-    <tr>
-        <td>1 Hour</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>1</td>
         <td>400 AED</td>
         <td>450 AED</td>
-    </tr>
-    <tr>
-        <td>2 Hour</td>
+      </tr>
+      <tr>
+        <td>2</td>
         <td>500 AED</td>
         <td>550 AED</td>
-    </tr>
-    <tr>
-        <td>3 Hour</td>
+      </tr>
+      <tr>
+        <td>6</td>
         <td>800 AED</td>
         <td>850 AED</td>
-    </tr>
-</table>
-</div>
-
-    </div>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
+</div>
 
-</div> <!-- right -->
-
-</div> <!-- container -->
+<!-- STICKY BUTTON -->
+<div class="slider">
+  <div class="slider-track" id="sliderTrack">
+</div>
 
 <script>
-// =======================
-// ✅ DATA
-// =======================
+
 const images = [
-    "Amara1.jpg",
-    "Amara2.jpg",
-    "Amara3.jpg",
-    "Amara4.jpg",
-    "Amara5.jpg",
-    "Amara6.jpg",
-    "Amara7.jpg",
-    "Amara8.jpg",
-    "Amara9.jpg",
-    "Amara10.jpg",
-    "Amara11.jpg",
-    "Amara12.jpg"
+    "Limizi1.jpg",
+    "Limizi2.jpg",
+    "Limizi3.jpg",
+    "Limizi4.jpg",
+    "Limizi5.jpg",
+    "Limizi6.jpg",
+    "Limizi7.jpg",
+    "Limizi8.jpg",
+    "Limizi9.jpg",
+    "Limizi10.jpg"
 ];
 
-// =======================
-// ✅ STATE
-// =======================
-let currentIndex = 0;
-let autoSlide = null;
-let currentImg = 1;
+let index = 0;
+let current = 1;
 
-// =======================
-// ✅ DOM
-// =======================
-const thumbsContainer = document.getElementById("thumbs");
-const img1 = document.getElementById("img1");
-const img2 = document.getElementById("img2");
+const img1 = document.getElementById("mainImg");
+const img2 = document.getElementById("mainImg2");
+const thumbs = document.getElementById("thumbs");
 
-// =======================
-// ✅ CREATE THUMBS
-// =======================
-images.forEach((img, index) => {
-    const el = document.createElement("img");
-    el.src = img;
-
-    el.onclick = () => {
-        stopAutoSlide();        // 🔥 dừng khi user click
-        showImg(index);
-        startAutoSlide();       // 🔥 chạy lại
-    };
-
-    if (index === 0) el.classList.add("active");
-
-    thumbsContainer.appendChild(el);
+/* preload */
+images.forEach(src => {
+  const i = new Image();
+  i.src = src;
 });
 
-// =======================
-// ✅ GET THUMBS
-// =======================
-function getThumbs() {
-    return document.querySelectorAll(".thumbs img");
-}
+/* create thumbs */
+images.forEach((src, i) => {
+  const t = document.createElement("img");
+  t.src = src;
 
-// =======================
-// ✅ SHOW IMAGE (CORE)
-// =======================
-function showImg(index) {
-    const thumbs = getThumbs();
+  t.onclick = () => show(i);
 
-    if (index < 0) index = images.length - 1;
-    if (index >= images.length) index = 0;
+  if (i === 0) t.classList.add("active");
 
-    currentIndex = index;
+  thumbs.appendChild(t);
+});
 
-    const active = currentImg === 1 ? img1 : img2;
-    const next = currentImg === 1 ? img2 : img1;
+/* show */
+function show(i) {
+  index = i;
 
-    next.src = images[index];
+  const active = current === 1 ? img1 : img2;
+  const next = current === 1 ? img2 : img1;
 
+  // chuẩn bị ảnh mới
+  next.src = images[i];
+  next.classList.add("next");
+
+  // reset
+  next.classList.remove("slide-in");
+  active.classList.remove("slide-out");
+
+  // force reflow
+  void next.offsetWidth;
+
+  // chạy animation
+  next.classList.add("slide-in");
+  active.classList.add("slide-out");
+
+  // swap
+  setTimeout(() => {
+    active.classList.remove("active", "slide-out");
+    next.classList.remove("next");
     next.classList.add("active");
-    active.classList.remove("active");
 
-    currentImg = currentImg === 1 ? 2 : 1;
+    current = current === 1 ? 2 : 1;
+  }, 400);
 
-    thumbs.forEach(i => i.classList.remove("active"));
-    thumbs[index].classList.add("active");
+  // thumb active
+  const all = document.querySelectorAll(".thumbs img");
+  all.forEach(el => el.classList.remove("active"));
+  all[i].classList.add("active");
 }
 
-// =======================
-// ✅ NEXT / PREV
-// =======================
-function nextImg() {
-    showImg(currentIndex + 1);
+/* next prev */
+function next() {
+  show((index + 1) % images.length);
 }
 
-function prevImg() {
-    showImg(currentIndex - 1);
+function prev() {
+  show((index - 1 + images.length) % images.length);
 }
 
-// =======================
-// ✅ AUTO SLIDE
-// =======================
-function startAutoSlide() {
-    autoSlide = setInterval(() => {
-        showImg(currentIndex + 1);
-    }, 5000);
-}
-
-function stopAutoSlide() {
-    clearInterval(autoSlide);
-}
-
-// =======================
-// ✅ CLICK MAIN IMAGE
-// =======================
-img1.onclick = () => {
-    openViewer(images[currentIndex]);
-};
-
-img2.onclick = () => {
-    openViewer(images[currentIndex]);
-};
-
-// =======================
-// ✅ VIEWER
-// =======================
-function openViewer(src) {
-    const viewer = document.getElementById("viewer");
-    const img = document.getElementById("viewerImg");
-
-    img.src = src;
-    viewer.style.display = "flex";
-}
-
-function closeViewer() {
-    document.getElementById("viewer").style.display = "none";
-}
-
-// =======================
-// ✅ SWIPE MOBILE
-// =======================
+/* swipe mobile */
 let startX = 0;
-let endX = 0;
 
-const mainWrapper = document.querySelector(".main-wrapper");
-
-mainWrapper.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
+document.querySelector(".main-wrapper").addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
 });
 
-mainWrapper.addEventListener("touchend", (e) => {
-    endX = e.changedTouches[0].clientX;
-    handleSwipe();
+document.querySelector(".main-wrapper").addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+
+  if (startX - endX > 50) next();
+  if (endX - startX > 50) prev();
 });
 
-function handleSwipe() {
-    let diff = startX - endX;
+/* init */
+img1.src = images[0];
+img1.classList.add("active");
+let autoSlide = setInterval(() => {
+  next();
+}, 5000); // 🔥 5 giây
+const wrapper = document.querySelector(".main-wrapper");
 
-    if (Math.abs(diff) < 50) return;
+wrapper.addEventListener("touchstart", () => {
+  clearInterval(autoSlide);
+});
 
-    if (diff > 0) {
-        nextImg();
-    } else {
-        prevImg();
-    }
-}
+wrapper.addEventListener("touchend", () => {
+  autoSlide = setInterval(() => {
+    next();
+  }, 5000);
+});
 
-// =======================
-// ✅ START
-// =======================
-showImg(0);
-startAutoSlide();
 </script>
-<div id="viewer" onclick="closeViewer()">
 
-    <span class="close" onclick="closeViewer()">✕</span>
-
-    <!-- ẢNH LỚN -->
-    <img id="viewerImg" onclick="event.stopPropagation()">
-
-    <!-- 🔥 THUMB BÊN DƯỚI -->
-    <div id="viewerThumbs" class="viewer-thumbs" onclick="event.stopPropagation()"></div>
-
-</div>
+</script>
 
 </body>
 </html>
