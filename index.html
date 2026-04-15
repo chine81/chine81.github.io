@@ -61,7 +61,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 🔥 CHỈ 2 CARD */
-  gap: 20px;
+  gap: 10px;
   align-items: start;
 }
 
@@ -836,8 +836,8 @@ body {
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding: 20px;
+  gap:10px;
+  padding: 10px;
 }
 .card {
   transition: all 0.3s ease;
@@ -1185,21 +1185,16 @@ html, body {
 }
 
 .container {
-  width: 100% !important;       /* 🔥 đổi từ 100vw → 100% */
-  max-width: 100% !important;
-
-  margin: 0 auto !important;    /* 🔥 căn giữa */
-
-  padding: 0 0px !important;    /* giữ lề đều 2 bên */
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 body {
   margin: 0;
   overflow-x: hidden; /* tránh tràn ngang */
 }
-.content {
-  margin-left: -21px; 
-  margin-right: -21px;/* 🔥 kéo sang trái */
-}
+
 /* ===== FIX LOGO IMAGE ===== */
 .logo img {
   width: 180px;        /* chỉnh size logo */
@@ -1291,8 +1286,10 @@ body {
     gap: 20px;
 }
 .grid {
-  max-width:940px;   /* để card to và đẹp */
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;   /* 🔥 full luôn */
+  margin: 0;
+  padding:20px;
 }
 .phone-row,
 .phone-row span {
