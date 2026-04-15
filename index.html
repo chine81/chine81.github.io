@@ -26,16 +26,14 @@
             margin: 0 10px;
             text-decoration: none;
         }
-
-        /* LAYOUT */
-        .container {
-    display: flex;
-    gap: 20px; /* 👈 khoảng hở giữa 2 bên */
+.container {
+    display: block; /* 🔥 bỏ flex */
+    width: 100%;
 }
 
         /* SIDEBAR */
         .sidebar {
-            width: 200px;
+            width: 100%;
             padding: 20px;
             background: #1a1a1a;
         }
@@ -62,9 +60,9 @@
         /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* 🔥 CHỈ 2 CARD */
   gap: 20px;
-  align-items: start; /* tránh kéo giãn gây lỗi */
+  align-items: start;
 }
 
         /* CARD */
@@ -504,14 +502,21 @@ transform: translateY(-4px); /* 🔽 nhẹ thôi */
 
 /* ô đen dưới */
 .info {
-  padding: 10px;
-  background: #1a1a1a;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 15px;
+
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    color: white;
 }
 
 /* tên */
 .name {
   color: #ff4d6d;
-  font-size: 19px !important;
+  font-size: 35px !important;
   font-weight: bold;
   margin-bottom: 10px !important;
 }
@@ -830,7 +835,7 @@ body {
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 20px;
 }
@@ -951,7 +956,7 @@ box-shadow: 0 0 6px rgba(0,255,102,0.8);
   color: #acabab;
 }
 .img-box {
-  height: 380px; /* tăng lên (300 → 380 hoặc 420 tùy bạn) */
+  height: 600px; /* tăng lên (300 → 380 hoặc 420 tùy bạn) */
   overflow: hidden;
 }
 
@@ -1242,6 +1247,72 @@ body {
   transform: translateY(1px) scale(0.97) !important;
   box-shadow: 0 3px 6px rgba(0,0,0,0.3) !important;
 }
+/* sidebar thành thanh ngang */
+.sidebar.horizontal {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: #1a1a1a;
+    padding: 15px 20px;
+    border-right: none;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+/* chữ Saudi */
+.sidebar.horizontal h3 {
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* list city nằm ngang */
+.city-list {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap; /* xuống dòng nếu dài */
+}
+
+/* link */
+.city-list a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+/* hover đẹp */
+.city-list a:hover {
+    color: orange;
+    transform: translateY(-2px);
+}
+.city-list {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 20px;
+}
+.grid {
+  max-width:920px;   /* để card to và đẹp */
+  margin: 0 auto;
+}
+.phone-row,
+.phone-row span {
+  font-size: 20px !important; /* 🔥 dòng trên */
+}
+
+.location {
+  font-size: 20px !important; /* 🔥 dòng dưới */
+}
+.icons a {
+  transform: scale(1.5); /* 🔥 tăng size */
+}
+.icons a i {
+  font-size: 30px; /* chỉnh thêm nếu cần */
+}
+.icons {
+  position: relative;
+  top: 11px;   /* 🔼 xuống = tăng số */
+  left: -23px;  /* ➡ qua phải = tăng số */
+}
     </style>
 <body>
  <div class="container">
@@ -1291,108 +1362,28 @@ body {
     <div class="container">
 
         <!-- SIDEBAR -->
-        <div class="sidebar">
-            <h3>
-    Country <br>
-    <span class="saudi">Saudi Arabia</span>
-</h3>
-            <a href="#">🏙️ Riyadh</a>
-            <a href="#">🌊 Jeddah</a>
-            <a href="#">⛰️ Abha</a>
-            <a href="#">🏜️ Hail</a>
-            <a href="#">🌴 Buraydah</a>
-            <a href="#">🌊 Dammam</a>
-            <a href="#">🏢 Al Khobar</a>
-            <a href="#">🌴 Al Hofuf</a>
-            <a href="#">🏭 Jubail</a>
-        </div>
+<div class="sidebar horizontal">
+    <h3>
+        Country:
+        <span class="saudi">Saudi Arabia</span>
+    </h3>
+
+    <div class="city-list">
+        <a href="#">🏙️ Riyadh</a>
+        <a href="#">🌊 Jeddah</a>
+        <a href="#">⛰️ Abha</a>
+        <a href="#">🏜️ Hail</a>
+        <a href="#">🌴 Buraydah</a>
+        <a href="#">🌊 Dammam</a>
+        <a href="#">🏢 Al Khobar</a>
+        <a href="#">🌴 Al Hofuf</a>
+        <a href="#">🏭 Jubail</a>
+    </div>
+</div>
 
         <!-- CONTENT -->
         <div class="content">
 
-  <div class="filter-bar">
-
-  <!-- Included Services -->
-  <div class="filter-item">
-    <label>Included Services:</label>
-
-    <div class="dropdown">
-      <div class="dropdown-btn" onclick="toggleDropdown(this)">
-        Select duration ▼
-      </div>
-
-      <div class="dropdown-content">
-        <label><input type="radio" name="price"> 1 Hour</label>
-        <label><input type="radio" name="price"> 2 Hours</label>
-        <label><input type="radio" name="price"> 3 Hours</label>
-        <label><input type="radio" name="price"> 6 Hours</label>
-        <label><input type="radio" name="price"> 12 Hours</label>
-        <label><input type="radio" name="price"> Full Night</label>
-      </div>
-    </div>
-  </div>
-
-  <!-- Price -->
-  <div class="filter-item">
-    <label>Price:</label>
-
-    <div class="dropdown">
-      <div class="dropdown-btn" onclick="toggleDropdown(this)">
-        All Prices ▼
-      </div>
-
-      <div class="dropdown-content">
-        <label><input type="radio" name="price2" checked> All Prices</label>
-        <label><input type="radio" name="price2"> 0 - 100 USD</label>
-        <label><input type="radio" name="price2"> 100 - 200 USD</label>
-        <label><input type="radio" name="price2"> 200 - 300 USD</label>
-        <label><input type="radio" name="price2"> Over 300 USD</label>
-      </div>
-    </div>
-  </div>
-
-  <!-- Nationality -->
-  <div class="filter-item">
-    <label>Nationality:</label>
-    <select>
-      <option>Select nationality</option>
-      <option>Vietnam</option>
-      <option>Dubai</option>
-      <option>Thai</option>
-    </select>
-  </div>
-
-  <!-- Language -->
-  <div class="filter-item">
-    <label>Language:</label>
-    <select>
-      <option>Select language</option>
-      <option>English</option>
-      <option>Arabic</option>
-    </select>
-  </div>
-
-  <!-- Age -->
-  <div class="filter-item">
-    <label>Age:</label>
-    <select>
-      <option>Select age</option>
-      <option>18 - 25</option>
-      <option>25 - 30</option>
-    </select>
-  </div>
-
-  <!-- Category -->
-  <div class="filter-item">
-    <label>Category:</label>
-    <select>
-      <option>Select category</option>
-      <option>VIP</option>
-      <option>Normal</option>
-    </select>
-  </div>
-
-</div>
 
 <h1 class="rainbow-text">
   Choose Independent Saudi Arabia Escorts
