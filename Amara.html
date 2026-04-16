@@ -332,8 +332,8 @@ body {
   justify-content: space-between;
   align-items: center;
 
-  background: #f2f2f2;
-  padding: 15px 20px;
+  background: #000; /* 🔥 nền đen */
+  padding: 6px 20px; /* 🔥 giảm xuống */
 
   border-bottom: 1px solid #ddd;
 }
@@ -346,7 +346,9 @@ body {
 }
 
 .logo img {
-  width: 40px;
+  height: 40px;     /* chỉnh chiều cao */
+  width: auto;      /* 🔥 QUAN TRỌNG: giữ tỉ lệ */
+  object-fit: contain;
 }
 
 .logo span {
@@ -358,6 +360,7 @@ body {
 .menu-btn {
   font-size: 22px;
   cursor: pointer;
+  color: #fff; /* 🔥 trắng */
 }
 
 .sub-header {
@@ -536,17 +539,184 @@ max-width: 400px;
   flex-shrink: 0;
   object-fit: cover;
 }
+.logo img {
+  height: 35px; /* 🔥 chỉnh to nhỏ */
+}
+.top-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.logo img {
+  image-rendering: auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 53px; /* tăng nếu muốn */
+}
+/* menu ẩn */
+.dropdown-menu {
+  width: 100%;
+  background: #fff;
+
+  display: none;
+  flex-direction: column;
+
+  border-bottom: 1px solid #ddd;
+}
+
+/* item */
+.dropdown-menu a {
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+
+  border-bottom: 1px solid #eee;
+}
+
+/* mở menu */
+.dropdown-menu.show {
+  display: flex;
+}
+
+/* item */
+.dropdown-menu a {
+  padding: 12px;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu a:hover {
+  background: #f5f5f5;
+}
+
+/* khi mở */
+.dropdown-menu.show {
+  display: flex;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  width: 200px;
+  background: #fff;
+
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+  display: none;
+  flex-direction: column;
+}
+
+.dropdown-menu a {
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-menu.show {
+  display: flex;
+}
+/* overlay mờ */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(3px);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.3s;
+  z-index: 998;
+}
+
+/* menu chính */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; /* ẩn bên phải */
+
+  width: 250px;
+  height: 100%;
+
+  background: #111;
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+
+  transition: 0.3s;
+  z-index: 999;
+}
+
+/* item */
+.side-menu a {
+  padding: 15px;
+  text-decoration: none;
+  color: #fff;
+  border-bottom: 1px solid #333;
+  text-align: center;
+}
+
+/* mở menu */
+.side-menu.show {
+  right: 0;
+}
+
+/* overlay hiện */
+.overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+.menu-btn {
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-btn:active {
+  transform: scale(0.9);
+}
 </style>
 </head>
 
 <body>
+<!-- HEADER -->
 <div class="top-header">
-
-  <!-- logo -->
   <div class="logo">
-    <img src="logo.png" alt="logo">
-    <span>EuroGirls Dubai</span>
+    <img src="logo.png">
   </div>
+
+  <div class="menu-btn" onclick="openMenu()">☰</div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<!-- MENU -->
+<div class="side-menu" id="sideMenu">
+  <a href="#">Home</a>
+  <a href="#">Blog</a>
+  <a href="#">Contact Us</a>
+  <a href="#">Login</a>
+</div>
 
   <!-- menu icon -->
   <div class="menu-btn">
@@ -803,7 +973,31 @@ wrapper.addEventListener("touchend", () => {
 
 </script>
 
-</script>
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("show");
+}
 
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("menu");
+  const btn = document.querySelector(".menu-btn");
+
+  if (!menu.contains(e.target) && !btn.contains(e.target)) {
+    menu.classList.remove("show");
+  }
+});
+</script>
+<script>
+function openMenu() {
+  document.getElementById("sideMenu").classList.add("show");
+  document.getElementById("overlay").classList.add("show");
+}
+
+function closeMenu() {
+  document.getElementById("sideMenu").classList.remove("show");
+  document.getElementById("overlay").classList.remove("show");
+}
+</script>
+</body>
 </body>
 </html>
