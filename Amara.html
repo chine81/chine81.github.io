@@ -695,11 +695,11 @@ max-width: 400px;
   transform: scale(0.9);
 }
 .menu-btn {
-  font-size: 39px;        /* 🔥 làm 3 gạch to lên */
+  font-size: 49px;        /* 🔥 làm 3 gạch to lên */
   color: #fff;
 
-  width: 40px;            /* 🔥 khung vuông */
-  height: 30px;
+  width: 50px;            /* 🔥 khung vuông */
+  height: 40px;
 
   border: 1px solid #fff; /* 🔥 viền trắng */
   border-radius: 7px;    /* 🔥 bo góc đẹp */
@@ -708,12 +708,44 @@ max-width: 400px;
   align-items: center;
   justify-content: center;
 
-  line-height: 1;     /* 🔥 bắt buộc */
+  line-height: 0;     /* 🔥 bắt buộc */
   padding: 0;         /* tránh lệch */
 
   cursor: pointer;
 
   transition: 0.25s;
+}
+.menu-btn {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #fff;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.menu-btn span {
+  width: 22px;
+  height: 3px;
+  background: #fff;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* animation */
+.menu-btn.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-btn.active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 </style>
 </head>
@@ -725,7 +757,10 @@ max-width: 400px;
     <img src="logo.png">
   </div>
 
-  <div class="menu-btn" onclick="openMenu()">☰</div>
+<div class="menu-btn" onclick="toggleMenu(this)">
+  <span></span>
+  <span></span>
+  <span></span>
 </div>
 
 <!-- OVERLAY -->
@@ -738,11 +773,6 @@ max-width: 400px;
   <a href="#">Contact Us</a>
   <a href="#">Login</a>
 </div>
-
-  <!-- menu icon -->
-  <div class="menu-btn">
-    ☰
-  </div>
 
 </div>
 
@@ -1009,15 +1039,19 @@ document.addEventListener("click", function(e) {
 });
 </script>
 <script>
-function openMenu() {
-  document.getElementById("sideMenu").classList.add("show");
-  document.getElementById("overlay").classList.add("show");
+function toggleMenu(btn) {
+  btn.classList.toggle("active");
+
+  document.getElementById("sideMenu").classList.toggle("show");
+  document.getElementById("overlay").classList.toggle("show");
 }
 
 function closeMenu() {
   document.getElementById("sideMenu").classList.remove("show");
   document.getElementById("overlay").classList.remove("show");
+  document.querySelector(".menu-btn").classList.remove("active");
 }
+</script>
 </script>
 </body>
 </body>
