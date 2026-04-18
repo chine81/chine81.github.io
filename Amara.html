@@ -873,9 +873,12 @@ max-width: 400px;
 }
 
 .zoom-modal img {
-  image-rendering: auto;
-  backface-visibility: hidden;
-  transform: translateZ(0); /* 🔥 fix blur */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+
+  transition: transform 0.25s ease;
+  will-change: transform;
 }
 </style>
 </head>
@@ -1148,67 +1151,7 @@ wrapper.addEventListener("touchend", () => {
     next();
   }, 5000);
 });
-/* ===== ZOOM ===== */
-/* ===== ZOOM ===== */
-let modal;
-let zoomImg;
 
-window.addEventListener("DOMContentLoaded", () => {
-  modal = document.getElementById("zoomModal");
-  zoomImg = document.getElementById("zoomImg");
-});
-
-let zoomIndex = 0;
-
-function openZoom(src) {
-  zoomIndex = images.indexOf(src);
-  zoomImg.src = src;
-  modal.classList.add("show");
-}
-
-function closeZoom() {
-  modal.classList.remove("show");
-}
-
-/* swipe */
-let zx = 0;
-
-modal.addEventListener("touchstart", e => {
-  zx = e.touches[0].clientX;
-});
-
-modal.addEventListener("touchend", e => {
-  let dx = e.changedTouches[0].clientX - zx;
-
-  if (dx < -50) nextZoom();
-  if (dx > 50) prevZoom();
-});
-
-function nextZoom() {
-  zoomIndex = (zoomIndex + 1) % images.length;
-  zoomImg.src = images[zoomIndex];
-}
-
-function prevZoom() {
-  zoomIndex = (zoomIndex - 1 + images.length) % images.length;
-  zoomImg.src = images[zoomIndex];
-}
-let lastTap = 0;
-
-modal.addEventListener("touchend", e => {
-  let now = Date.now();
-
-  if (now - lastTap < 250) {
- zoomImg.style.transform = `scale(${zoomScale}) translateZ(0)`;
-  }
-
-  lastTap = now;
-});
 </script>
-<!-- ZOOM -->
-<div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
-  <img id="zoomImg">
-</div>
-
 </body>
 </html>
