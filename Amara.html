@@ -1059,8 +1059,13 @@ let current = 1;
 const img1 = document.getElementById("mainImg");
 const img2 = document.getElementById("mainImg2");
 const thumbs = document.getElementById("thumbs");
+img1.src = images[0];
+img1.classList.add("active");
 
-/* preload */
+img2.src = images[1];
+
+img1.style.transform = "translateX(0)";
+img2.style.transform = "translateX(100%)";
 images.forEach(src => {
   const i = new Image();
   i.src = src;
@@ -1098,10 +1103,11 @@ function show(i) {
   next.style.transform = "translateX(100%)";
   next.classList.add("active");
 
-  setTimeout(() => {
-    active.style.transform = "translateX(-100%)";
-    next.style.transform = "translateX(0)";
-  }, 10);
+setTimeout(() => {
+  active.style.transform = "translateX(-100%)";
+  next.style.transform = "translateX(0)";
+}, 10);
+
 
   current = current === 1 ? 2 : 1;
 
