@@ -33,13 +33,6 @@ body {
   width: 60%;
 }
 
-.main-wrapper {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  overflow: hidden;
-  border-radius: 15px;
-}
 
 .main-wrapper img {
   width: 100%;
@@ -48,28 +41,10 @@ body {
   transition: transform 0.3s;
 }
 
-/* NAV */
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-}
 
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* THUMBS */
-.thumbs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 🔥 đúng 4 ảnh */
-  gap: 10px;
-}
 
 .thumbs img {
   width: 100%;
@@ -168,23 +143,11 @@ body {
   height: 600px; /* 🔥 kéo dài */
 }
 
-  .thumbs {
-    grid-template-columns: repeat(3, 1fr);
-  }
 
   .actions {
     flex-direction: column;
   }
 
-}
-/* MAIN IMAGE */
-.main-wrapper {
-  position: relative;
-  width: 100%;
-  height: 420px;
-  overflow: hidden;
-  border-radius: 15px;
-  background: #000;
 }
 
 .main-img {
@@ -200,30 +163,9 @@ body {
   opacity: 1;
 }
 
-/* NAV */
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* THUMBS */
-.thumbs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-top: 10px;
-}
 
 .thumbs img {
   width: 100%;
@@ -253,7 +195,7 @@ body {
 .main-wrapper {
   position: relative;
   width: 100%;
-  height: 65vh; /* 🔥 auto theo màn */
+  height: 65vh;
   max-height: 650px;
   border-radius: 15px;
   overflow: hidden;
@@ -272,32 +214,6 @@ body {
 .main-img.active {
   opacity: 1;
 }
-
-/* NAV */
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
-  border: none;
-  color: white;
-  padding: 12px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 5;
-}
-
-/* THUMB SCROLL NGANG */
-.thumbs {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-  overflow-x: auto;
-  padding-bottom: 5px;
-
-  overflow-y: hidden; /* 🔥 thêm dòng này */
-}
-
 /* Ẩn thanh scroll */
 .thumbs::-webkit-scrollbar {
   display: none;
@@ -354,13 +270,6 @@ body {
 .logo span {
   font-weight: bold;
   color: #e91e63;
-}
-
-/* menu */
-.menu-btn {
-  font-size: 22px;
-  cursor: pointer;
-  color: #fff; /* 🔥 trắng */
 }
 
 .sub-header {
@@ -686,37 +595,11 @@ max-width: 400px;
   opacity: 1;
   pointer-events: all;
 }
-.menu-btn {
-  font-size: 22px;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
 
 .menu-btn:active {
   transform: scale(0.9);
 }
-.menu-btn {
-  font-size: 49px;        /* 🔥 làm 3 gạch to lên */
-  color: #fff;
 
-  width: 50px;            /* 🔥 khung vuông */
-  height: 40px;
-
-  border: 1px solid #fff; /* 🔥 viền trắng */
-  border-radius: 7px;    /* 🔥 bo góc đẹp */
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  line-height: 0;     /* 🔥 bắt buộc */
-  padding: 0;         /* tránh lệch */
-
-  cursor: pointer;
-
-  transition: 0.25s;
-}
 .menu-btn {
   width: 38px;   /* 🔥 giảm từ 48 xuống */
   height: 38px;
@@ -873,13 +756,118 @@ max-width: 400px;
 }
 
 .zoom-modal img {
-  image-rendering: auto;
-  backface-visibility: hidden;
-  transform: translateZ(0); /* 🔥 fix blur */
+  width: 100%;
+  height: auto;
+
+  max-height: 100vh;
+}
+.zoom-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.viewer {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.viewer.show {
+  display: flex;
+}
+
+/* ảnh */
+.viewer img {
+  width: 100%;
+  height: 100vh;
+  object-fit: contain;
+}
+
+/* top bar */
+.viewer-top {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 14px;
+  z-index: 10;
+}
+
+/* nút X */
+.close {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* mũi tên */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 45px;
+  color: white;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+}
+
+.nav.left { left: 10px; }
+.nav.right { right: 10px; }
+/* hover đẹp */
+.nav:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+.close{
+  position:absolute;
+  top:20px;
+  right:20px;
+
+  width:45px;
+  height:45px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:26px;
+  color:#fff;
+
+  background:rgba(0,0,0,0.5);
+  border-radius:50%;
+
+  cursor:pointer;
+  z-index:10;
+
+  transition:0.3s;
+}
+
+.close:hover{
+  background:rgba(255,0,100,0.8);
+  transform:scale(1.1);
 }
 </style>
 </head>
 
+<div id="viewer" class="viewer">
+
+  <div class="viewer-top">
+    <span id="viewerCount">1 / 1</span>
+    <span class="close" onclick="closeViewer()">✕</span>
+  </div>
+
+  <img id="viewerImg">
+
+  <div class="nav left" onclick="prevViewer()">‹</div>
+  <div class="nav right" onclick="nextViewer()">›</div>
+
+</div>
 <body>
 <!-- HEADER -->
 <div class="top-header">
@@ -933,8 +921,8 @@ max-width: 400px;
 <div class="main-wrapper">
   <button class="nav prev" onclick="prev()">❮</button>
 
-<img id="mainImg" class="main-img active" onclick="openZoom(this.src)">
-<img id="mainImg2" class="main-img" onclick="openZoom(this.src)">
+<img id="mainImg" class="main-img active">
+<img id="mainImg2" class="main-img">
 
   <button class="nav next" onclick="next()">❯</button>
 </div>
@@ -1033,19 +1021,7 @@ max-width: 400px;
 <div class="slider">
   <div class="slider-track" id="sliderTrack">
 </div>
-<div class="menu-btn" onclick="toggleMenu(this)">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-<div class="side-menu" id="sideMenu">
-  <a href="#">Home</a>
-  <a href="#">Blog</a>
-  <a href="#">Contact Us</a>
-  <a href="#">Login</a>
-</div>
 <script>
 function toggleMenu(btn) {
   btn.classList.toggle("active");
@@ -1099,9 +1075,9 @@ images.forEach((src, i) => {
   const img = document.createElement("img");
   img.src = src;
 
-  img.onclick = () => {
-  show(i);
-  openZoom(images[i]); // 🔥 THÊM DÒNG NÀY
+img.onclick = () => {
+  show(i);         // đổi slider trước
+  openViewer(i);   // rồi mở viewer
 };
 
   if (i === 0) wrapper.classList.add("active");
@@ -1176,68 +1152,74 @@ wrapper.addEventListener("touchend", () => {
     next();
   }, 5000);
 });
-/* ===== ZOOM ===== */
-/* ===== ZOOM ===== */
-let modal;
-let zoomImg;
-
-window.addEventListener("DOMContentLoaded", () => {
-  modal = document.getElementById("zoomModal");
-  zoomImg = document.getElementById("zoomImg");
-});
-
-let zoomIndex = 0;
-
-function openZoom(src) {
-  zoomIndex = images.indexOf(src);
-  zoomImg.src = src;
-  modal.classList.add("show");
-}
-
-function closeZoom() {
-  modal.classList.remove("show");
-}
 
 /* swipe */
 let zx = 0;
 
-modal.addEventListener("touchstart", e => {
-  zx = e.touches[0].clientX;
-});
-
-modal.addEventListener("touchend", e => {
-  let dx = e.changedTouches[0].clientX - zx;
-
-  if (dx < -50) nextZoom();
-  if (dx > 50) prevZoom();
-});
-
-function nextZoom() {
-  zoomIndex = (zoomIndex + 1) % images.length;
-  zoomImg.src = images[zoomIndex];
-}
-
-function prevZoom() {
-  zoomIndex = (zoomIndex - 1 + images.length) % images.length;
-  zoomImg.src = images[zoomIndex];
-}
-let lastTap = 0;
-
-modal.addEventListener("touchend", e => {
-  let now = Date.now();
-
-  if (now - lastTap < 250) {
-    zoomImg.style.transform =
-      zoomImg.style.transform === "scale(2)" ? "scale(1)" : "scale(2)";
-  }
-
-  lastTap = now;
-});
 </script>
 <!-- ZOOM -->
-<div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
-  <img id="zoomImg">
-</div>
 
+
+<script>
+const viewer = document.getElementById("viewer");
+const viewerImg = document.getElementById("viewerImg");
+const viewerCount = document.getElementById("viewerCount");
+
+let currentIndex = 0;
+
+// 🔥 DÁN Ở ĐÂY
+viewer.addEventListener("click", (e)=>{
+  if(e.target.id === "viewer"){
+    closeViewer();
+  }
+});
+
+document.addEventListener("keydown", (e)=>{
+  if(e.key === "Escape"){
+    closeViewer();
+  }
+});
+
+/* CLOSE */
+function closeViewer() {
+  viewer.classList.remove("show");
+}
+
+/* NEXT */
+function nextViewer() {
+  currentIndex = (currentIndex + 1) % images.length;
+  viewerImg.src = images[currentIndex];
+  show(currentIndex); // 🔥 thêm dòng này
+}
+
+/* PREV */
+function prevViewer() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  viewerImg.src = images[currentIndex];
+  show(currentIndex); // 🔥 thêm
+}
+
+/* COUNT */
+function updateCount() {
+  viewerCount.innerText =
+    (currentIndex + 1) + " / " + images.length;
+}
+
+/* SWIPE */
+let startX = 0;
+
+viewer.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+viewer.addEventListener("touchend", e => {
+  let dx = e.changedTouches[0].clientX - startX;
+
+  if (dx < -50) nextViewer();
+  if (dx > 50) prevViewer();
+});
+img1.onclick = () => openViewer(index);
+img2.onclick = () => openViewer(index);
+</script>
 </body>
 </html>
