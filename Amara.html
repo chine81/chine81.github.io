@@ -850,6 +850,36 @@ max-width: 400px;
     0 0 8px #ff4dd2,
     0 0 16px rgba(255, 77, 210, 0.5);
 }
+.zoom-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.96);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s ease;
+  z-index: 9999;
+
+  touch-action: none;
+}
+
+.zoom-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.zoom-modal img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
 </style>
 </head>
 
@@ -906,8 +936,8 @@ max-width: 400px;
 <div class="main-wrapper">
   <button class="nav prev" onclick="prev()">❮</button>
 
-  <img id="mainImg" class="main-img active">
-  <img id="mainImg2" class="main-img">
+<img id="mainImg" class="main-img active" onclick="openZoom(this.src)">
+<img id="mainImg2" class="main-img" onclick="openZoom(this.src)">
 
   <button class="nav next" onclick="next()">❯</button>
 </div>
@@ -1009,7 +1039,7 @@ max-width: 400px;
 
 <script>
 
-const images = [
+const images = [ 
     "Limizi1.jpg",
     "Limizi2.jpg",
     "Limizi3.jpg",
@@ -1044,7 +1074,10 @@ images.forEach((src, i) => {
   const img = document.createElement("img");
   img.src = src;
 
-  img.onclick = () => show(i);
+  img.onclick = () => {
+  show(i);
+  openZoom(images[i]); // 🔥 THÊM DÒNG NÀY
+};
 
   if (i === 0) wrapper.classList.add("active");
 
@@ -1118,38 +1151,68 @@ wrapper.addEventListener("touchend", () => {
     next();
   }, 5000);
 });
+/* ===== ZOOM ===== */
+/* ===== ZOOM ===== */
+let modal;
+let zoomImg;
 
-</script>
+window.addEventListener("DOMContentLoaded", () => {
+  modal = document.getElementById("zoomModal");
+  zoomImg = document.getElementById("zoomImg");
+});
 
-<script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("show");
+let zoomIndex = 0;
+
+function openZoom(src) {
+  zoomIndex = images.indexOf(src);
+  zoomImg.src = src;
+  modal.classList.add("show");
 }
 
-document.addEventListener("click", function(e) {
-  const menu = document.getElementById("menu");
-  const btn = document.querySelector(".menu-btn");
+function closeZoom() {
+  modal.classList.remove("show");
+}
 
-  if (!menu.contains(e.target) && !btn.contains(e.target)) {
-    menu.classList.remove("show");
+/* swipe */
+let zx = 0;
+
+modal.addEventListener("touchstart", e => {
+  zx = e.touches[0].clientX;
+});
+
+modal.addEventListener("touchend", e => {
+  let dx = e.changedTouches[0].clientX - zx;
+
+  if (dx < -50) nextZoom();
+  if (dx > 50) prevZoom();
+});
+
+function nextZoom() {
+  zoomIndex = (zoomIndex + 1) % images.length;
+  zoomImg.src = images[zoomIndex];
+}
+
+function prevZoom() {
+  zoomIndex = (zoomIndex - 1 + images.length) % images.length;
+  zoomImg.src = images[zoomIndex];
+}
+let lastTap = 0;
+
+modal.addEventListener("touchend", e => {
+  let now = Date.now();
+
+  if (now - lastTap < 250) {
+    zoomImg.style.transform =
+      zoomImg.style.transform === "scale(2)" ? "scale(1)" : "scale(2)";
   }
+
+  lastTap = now;
 });
 </script>
-<script>
-function toggleMenu(btn) {
-  btn.classList.toggle("active");
+<!-- ZOOM -->
+<div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
+  <img id="zoomImg">
+</div>
 
-  document.getElementById("sideMenu").classList.toggle("show");
-  document.getElementById("overlay").classList.toggle("show");
-}
-
-function closeMenu() {
-  document.getElementById("sideMenu").classList.remove("show");
-  document.getElementById("overlay").classList.remove("show");
-  document.querySelector(".menu-btn").classList.remove("active");
-}
-</script>
-</script>
-</body>
 </body>
 </html>
