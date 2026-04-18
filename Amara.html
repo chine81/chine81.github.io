@@ -1125,40 +1125,33 @@ function prev() {
 let startX = 0;
 
 document.querySelector(".main-wrapper").addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
+  stopAutoSlide(); // 🔥 thêm
 });
 
 document.querySelector(".main-wrapper").addEventListener("touchend", e => {
-  let endX = e.changedTouches[0].clientX;
+  startAutoSlide(); // 🔥 thêm
 
   if (startX - endX > 50) next();
   if (endX - startX > 50) prev();
 });
+let autoSlide;
 
-/* init */
-img1.src = images[0];
-img1.classList.add("active");
-let autoSlide = setInterval(() => {
-  next();
-}, 5000); // 🔥 5 giây
-const wrapper = document.querySelector(".main-wrapper");
-
-wrapper.addEventListener("touchstart", () => {
-  clearInterval(autoSlide);
-});
-
-wrapper.addEventListener("touchend", () => {
+function startAutoSlide(){
+  stopAutoSlide(); // 🔥 luôn clear trước
   autoSlide = setInterval(() => {
     next();
   }, 5000);
-});
+}
 
-/* swipe */
-let zx = 0;
+function stopAutoSlide(){
+  clearInterval(autoSlide);
+}
+
+// 🔥 THÊM DÒNG NÀY
+startAutoSlide();
 
 </script>
 <!-- ZOOM -->
-
 
 <script>
 const viewer = document.getElementById("viewer");
@@ -1166,6 +1159,14 @@ const viewerImg = document.getElementById("viewerImg");
 const viewerCount = document.getElementById("viewerCount");
 
 let currentIndex = 0;
+
+// 🔥 THÊM NGAY ĐÂY
+function openViewer(i){
+  currentIndex = i;
+  viewer.classList.add("show");
+  viewerImg.src = images[i];
+  updateCount();
+}
 
 // 🔥 DÁN Ở ĐÂY
 viewer.addEventListener("click", (e)=>{
@@ -1189,14 +1190,16 @@ function closeViewer() {
 function nextViewer() {
   currentIndex = (currentIndex + 1) % images.length;
   viewerImg.src = images[currentIndex];
-  show(currentIndex); // 🔥 thêm dòng này
+  show(currentIndex);
+  updateCount(); // 🔥 thêm
 }
 
 /* PREV */
 function prevViewer() {
   currentIndex = (currentIndex - 1 + images.length) % images.length;
   viewerImg.src = images[currentIndex];
-  show(currentIndex); // 🔥 thêm
+  show(currentIndex);
+  updateCount(); // 🔥 thêm
 }
 
 /* COUNT */
