@@ -67,9 +67,8 @@ body {
 /* THUMBS */
 .thumbs {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* 🔥 đúng 4 ảnh */
   gap: 10px;
-  margin-top: 10px;
 }
 
 .thumbs img {
@@ -206,6 +205,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  
   background: rgba(0,0,0,0.5);
   border: none;
   color: white;
@@ -227,8 +227,9 @@ body {
 
 .thumbs img {
   width: 100%;
-  height: 80px;
+  aspect-ratio: 1 / 1; /* 🔥 QUAN TRỌNG */
   object-fit: cover;
+
   border-radius: 10px;
   cursor: pointer;
   opacity: 0.5;
@@ -291,9 +292,10 @@ body {
   display: flex;
   gap: 10px;
   margin-top: 12px;
-
-  overflow-x: auto; /* 🔥 scroll ngang */
+  overflow-x: auto;
   padding-bottom: 5px;
+
+  overflow-y: hidden; /* 🔥 thêm dòng này */
 }
 
 /* Ẩn thanh scroll */
@@ -308,17 +310,15 @@ body {
 
   object-fit: cover;
   border-radius: 12px;
-  cursor: pointer;
 
-  opacity: 0.6;
-  transition: 0.3s;
+  display: block; /* 🔥 thêm */
 }
 
 /* ACTIVE */
 .thumbs img.active {
-  opacity: 1;
+  transform: none;
   border: 3px solid hotpink;
-  transform: scale(1.08);
+  box-shadow: 0 0 12px hotpink;
 }
 
 /* HOVER */
@@ -750,6 +750,106 @@ max-width: 400px;
 .menu-btn.active span:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);
 }
+.prev, .next {
+  font-size: 32px !important;   /* 🔥 ép to */
+  padding: 16px !important;     /* 🔥 vùng bấm to */
+  width: 50px !important;
+  height: 50px !important;
+
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.5) !important;
+  color: #fff !important;
+  border-radius: 50% !important;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+/* ===== GRID ===== */
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* ===== ITEM ===== */
+.thumbs img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+
+  border-radius: 12px;
+  cursor: pointer;
+
+  opacity: 0.6;
+  transition: all 0.35s ease;
+
+  display: block;
+}
+
+/* ===== HOVER ===== */
+.thumbs img:hover {
+  transform: scale(1.08); /* 🔥 zoom nhẹ */
+  opacity: 1;
+
+  box-shadow: 0 0 12px rgba(255, 0, 150, 0.6); /* 🔥 glow */
+}
+
+/* ===== ACTIVE ===== */
+.thumbs img.active {
+  opacity: 1;
+
+  border: 2px solid #ff4dd2;
+
+  box-shadow:
+    0 0 10px #ff4dd2,
+    0 0 20px rgba(255, 77, 210, 0.5);
+
+  transform: scale(1.05);
+}
+.thumbs img {
+  will-change: transform;
+}
+/* container */
+.thumb-item {
+  min-width: 90px;
+  height: 90px;
+
+  border-radius: 12px;
+  overflow: hidden; /* 🔥 CHẶN TRÀN */
+
+  position: relative;
+}
+
+/* ảnh */
+.thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: transform 0.35s ease;
+}
+/* hover */
+.thumb-item:hover img {
+  transform: scale(1.08);
+}
+
+/* active */
+.thumb-item.active img {
+  transform: scale(1.06);
+}
+.thumb-item.active {
+  border: 2px solid #ff4dd2;
+
+  box-shadow:
+    0 0 8px #ff4dd2,
+    0 0 16px rgba(255, 77, 210, 0.5);
+}
 </style>
 </head>
 
@@ -937,14 +1037,19 @@ images.forEach(src => {
 
 /* create thumbs */
 images.forEach((src, i) => {
-  const t = document.createElement("img");
-  t.src = src;
 
-  t.onclick = () => show(i);
+  const wrapper = document.createElement("div");
+  wrapper.className = "thumb-item";
 
-  if (i === 0) t.classList.add("active");
+  const img = document.createElement("img");
+  img.src = src;
 
-  thumbs.appendChild(t);
+  img.onclick = () => show(i);
+
+  if (i === 0) wrapper.classList.add("active");
+
+  wrapper.appendChild(img);
+  thumbs.appendChild(wrapper);
 });
 
 /* show */
@@ -954,34 +1059,23 @@ function show(i) {
   const active = current === 1 ? img1 : img2;
   const next = current === 1 ? img2 : img1;
 
-  // chuẩn bị ảnh mới
   next.src = images[i];
-  next.classList.add("next");
 
-  // reset
-  next.classList.remove("slide-in");
-  active.classList.remove("slide-out");
+  next.style.transform = "translateX(100%)";
+  next.classList.add("active");
 
-  // force reflow
-  void next.offsetWidth;
-
-  // chạy animation
-  next.classList.add("slide-in");
-  active.classList.add("slide-out");
-
-  // swap
   setTimeout(() => {
-    active.classList.remove("active", "slide-out");
-    next.classList.remove("next");
-    next.classList.add("active");
+    active.style.transform = "translateX(-100%)";
+    next.style.transform = "translateX(0)";
+  }, 10);
 
-    current = current === 1 ? 2 : 1;
-  }, 400);
+  current = current === 1 ? 2 : 1;
 
-  // thumb active
-  const all = document.querySelectorAll(".thumbs img");
-  all.forEach(el => el.classList.remove("active"));
-  all[i].classList.add("active");
+  /* 🔥 FIX THUMB */
+const thumbs = document.querySelectorAll(".thumb-item");
+
+thumbs.forEach(el => el.classList.remove("active"));
+thumbs[i].classList.add("active");
 }
 
 /* next prev */
