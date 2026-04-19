@@ -96,21 +96,45 @@ body {
 .actions {
   margin-top: 15px;
   display: flex;
-  gap: 10px;
+  justify-content: center;  /* 🔥 căn giữa */
+  gap: 12px;
 }
 
 .btn {
-  flex: 1;
-  padding: 12px;
-  border-radius: 10px;
+  flex: none !important;        /* ❌ bỏ full ngang */
+
+  padding: 12px 20px;
+  border-radius: 999px;         /* 🔥 bo tròn */
+
   text-align: center;
   color: white;
   text-decoration: none;
+
+  min-width: 120px;             /* 🔥 độ dài đều */
+}
+.btn {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  font-weight: 600;
 }
 
-.whatsapp { background: #25D366; }
-.call { background: hotpink; }
+/* CALL - hồng → tím */
+.call {
+  background: linear-gradient(90deg, #e62485, #8e2de2) !important;
+  color: #fff;
+}
 
+/* WHATSAPP - xanh nhạt → xanh đậm */
+.whatsapp {
+  background: linear-gradient(90deg, #32e27c, #18b165) !important;
+  color: #fff;
+}
+.btn {
+  border-radius: 999px;
+  padding: 14px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
 /* STICKY WHATSAPP */
 .sticky-wa {
   position: fixed;
@@ -1104,7 +1128,40 @@ html, body {
 
   border: 1px solid #ddd;
 }
+.rates-box {
+  margin-top: 40px;   /* 🔥 xịch xuống nhẹ */
+}
+.wa-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 
+  width: 60px;
+  height: 60px;
+
+  background: #25D366;
+  color: white;
+  font-size: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  z-index: 9999;
+}
+.wa-float {
+  text-decoration: none !important;   /* 🔥 xóa gạch chân */
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+.wa-float {
+  animation: pulse 2s infinite;
+}
 </style>
 </head>
 
@@ -1509,6 +1566,10 @@ document.getElementById("mainImg").addEventListener("click", () => {
 document.getElementById("mainImg2").addEventListener("click", () => {
   openViewer(index);
 });
+
 </script>
+<a href="https://wa.me/12897945504" class="wa-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a> <!-- 🔥 THÊM DÒNG NÀY -->
 </body>
 </html>
