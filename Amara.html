@@ -1179,9 +1179,21 @@ html, body {
 .footer-links a {
   white-space: nowrap;   /* 🔥 giữ chữ trên 1 dòng */
 }
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;   /* 🔥 khoảng cách icon - chữ */
+}
+.whatsapp i {
+  font-size: 18px;        /* giữ size gốc */
+  transform: scale(1.4);  /* 🔥 phóng to icon */
+}
+
 </style>
 </head>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <div id="viewer" class="viewer">
 
   <div class="viewer-top">
@@ -1272,8 +1284,15 @@ html, body {
 </div>
 
     <div class="actions">
-      <a href="#" class="btn call">Call</a>
-      <a href="#" class="btn whatsapp">WhatsApp</a>
+<a href="#" class="btn call">
+  <i class="fas fa-phone"></i>
+  +12897945504
+</a>
+
+<a href="#" class="btn whatsapp">
+  <i class="fab fa-whatsapp"></i>
+  +12897945504
+</a>
     </div>
 
     <p class="desc">
