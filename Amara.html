@@ -863,6 +863,46 @@ max-width: 400px;
   height: auto !important;
   padding: 0 !important;
 }
+/* 🔥 vùng bấm to nhưng không thấy nền */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 100px;          /* 🔥 vùng bấm rộng */
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: none !important;
+  border-radius: 0 !important;
+
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* 🔥 đẩy vào trong */
+.prev {
+  left: 20px;           /* 👉 chỉnh số này để sát/xa */
+}
+
+.next {
+  right: 20px;
+}
+
+/* 🔥 icon nhỏ gọn nằm giữa */
+.prev::before,
+.next::before {
+  content: "";
+}
+
+/* nếu bạn dùng text ❮ ❯ */
+.prev,
+.next {
+  font-size: 30px;
+}
 </style>
 </head>
 
