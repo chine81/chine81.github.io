@@ -61,7 +61,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 🔥 CHỈ 2 CARD */
-  gap: 10px;
+  gap: 20px;
   align-items: start;
 }
 
@@ -836,8 +836,8 @@ body {
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap:10px;
-  padding: 10px;
+  gap: 20px;
+  padding: 20px;
 }
 .card {
   transition: all 0.3s ease;
@@ -956,7 +956,7 @@ box-shadow: 0 0 6px rgba(0,255,102,0.8);
   color: #acabab;
 }
 .img-box {
-  height: 750px; /* tăng lên (300 → 380 hoặc 420 tùy bạn) */
+  height: 650px; /* tăng lên (300 → 380 hoặc 420 tùy bạn) */
   overflow: hidden;
 }
 
@@ -1185,16 +1185,21 @@ html, body {
 }
 
 .container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
+  width: 100% !important;       /* 🔥 đổi từ 100vw → 100% */
+  max-width: 100% !important;
+
+  margin: 0 auto !important;    /* 🔥 căn giữa */
+
+  padding: 0 0px !important;    /* giữ lề đều 2 bên */
 }
 body {
   margin: 0;
   overflow-x: hidden; /* tránh tràn ngang */
 }
-
+.content {
+  margin-left: -21px; 
+  margin-right: -21px;/* 🔥 kéo sang trái */
+}
 /* ===== FIX LOGO IMAGE ===== */
 .logo img {
   width: 180px;        /* chỉnh size logo */
@@ -1286,10 +1291,8 @@ body {
     gap: 20px;
 }
 .grid {
-  width: 100%;
-  max-width: 100%;   /* 🔥 full luôn */
-  margin: 0;
-  padding:20px;
+  max-width:940px;   /* để card to và đẹp */
+  margin: 0 auto;
 }
 .phone-row,
 .phone-row span {
@@ -1315,76 +1318,262 @@ body {
   flex-direction: column;
   height: 100%;
 }
+/* ===== HEADER FIX ===== */
+/* HEADER MOBILE TO */
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 🔥 đẩy 2 bên */
+
+  background: #000;
+
+  padding: 20px 15px;  /* 🔥 giảm padding ngang để sát mép */
+  margin: 10px;
+
+  border-radius: 15px;
+}
+
+/* ===== LOGO ===== */
+.logo img {
+  height: 80px;   /* 🔥 tăng size */
+  width: auto;
+
+  margin-left: 5px; /* 🔥 sát trái hơn */
+}
+
+/* ===== NÚT 3 GẠCH ===== */
+.menu-btn {
+  width: 65px;
+  height: 65px;
+
+  border: 2px solid #fff;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 5px; /* 🔥 sát phải */
+}
+
+/* 3 gạch */
+.menu-btn span {
+  width: 32px;
+  height: 4px;
+  background: #fff;
+  margin: 4px 0;
+}
+@media (max-width: 768px) {
+  .top-header {
+    padding: 20px;
+    min-height: 90px;
+  }
+
+  .logo img {
+    height: 70px;
+  }
+
+  .menu-btn {
+    width: 55px;
+    height: 55px;
+  }
+}
+/* ===== FIX HEADER CHUẨN ===== */
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #000;
+
+  padding: 25px;
+  min-height: 100px;
+
+  border-radius: 15px;
+  margin: 10px;
+}
+
+/* LOGO TO */
+.logo img {
+  height: 80px;   /* 🔥 TO HẲN */
+  width: auto;
+}
+
+/* NÚT ☰ TO */
+.menu-btn {
+  width: 70px;
+  height: 70px;
+
+  border: 2px solid #fff;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: auto;   /* 🔥 QUAN TRỌNG NHẤT */
+}
+
+/* 3 gạch */
+.menu-btn span {
+  width: 32px;
+  height: 4px;
+  background: #fff;
+  margin: 4px 0;
+}
+.viewer,
+.viewer-top,
+.nav-left,
+.nav-right {
+  display: none !important;
+}
+/* ===== HEADER ===== */
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #000;
+  padding: 15px 10px;   /* giữ sát 2 bên */
+}
+
+/* ===== LOGO TO ===== */
+.top-header .logo img {
+  height: 120px !important;   /* 🔥 TO HẲN */
+  width: auto !important;
+}
+
+/* ===== NÚT ☰ TO ===== */
+.top-header .menu-btn {
+  width: 80px !important;
+  height: 80px !important;
+
+  border: 4px solid #fff;
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: auto; /* ép sang phải */
+}
+
+/* ===== 3 GẠCH ===== */
+.menu-btn span {
+  width: 48px;
+  height: 5px;
+  background: #fff;
+  margin: 6px 0;
+  border-radius: 3px;
+}
+/* dịch logo sang phải 1 chút */
+.top-header .logo {
+  margin-left: 20px;   /* 🔥 tăng/giảm số này */
+}
+
+/* kéo nút ☰ vào trái 1 chút */
+.top-header .menu-btn {
+  margin-right: 20px;  /* 🔥 tăng/giảm số này */
+}
+/* ===== MENU TRƯỢT ===== */
+.side-menu {
+  position: fixed;
+
+  top: 0;
+  right: -320px;
+
+  width: 320px;
+  height: 100vh;   /* 🔥 full chiều cao */
+
+  background: #000;
+
+  padding-top: 120px;
+
+  transition: 0.3s;
+  z-index: 99999;  /* 🔥 nổi lên trên hết */
+}
+
+/* khi mở */
+.side-menu.active {
+  right: 0;
+}
+
+/* link */
+.side-menu a {
+  display: block;
+  color: #fff;
+  font-size: 32px;   /* 🔥 to hơn */
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  border-bottom: 1px solid #222;
+}
+
+/* nền mờ */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.6);
+  display: none;
+
+  z-index: 9998;
+}
+
+/* khi mở */
+.overlay.active {
+  display: block;
+}
+.side-menu {
+  box-shadow: -8px 0 20px rgba(255,255,255,0.15); /* 🔥 ánh sáng bên trái */
+}
+body {
+  background: #f5f5f5;
+}
     </style>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<div id="viewer" class="viewer">
+
+  <img id="viewerImg">
+
+  <div class="nav left" onclick="prevViewer()">‹</div>
+  <div class="nav right" onclick="nextViewer()">›</div>
+
+</div>
 <body>
- <div class="container">
-  <div class="layout">
-
-    <!-- BÊN TRÁI -->
-    <div class="left">
-      <!-- DÁN PHẦN GALLERY ẢNH CỦA BẠN VÀO ĐÂY -->
-    </div>
-
-    <!-- BÊN PHẢI -->
-    <div class="right">
-
-      <!-- sau này bạn thêm info vào đây -->
-    </div>
-
+<!-- HEADER -->
+<div class="top-header">
+  <div class="logo">
+    <img src="logo.png">
   </div>
-</div>   
 
-    <!-- HEADER -->
-<div class="header">
-    
+<div class="menu-btn" onclick="toggleMenu(this)">
+  <span></span>
+  <span></span>
+  <span></span>
+</div> <!-- đóng top-header -->
 
-    <!-- LOGO -->
-    <div class="logo">
-        <img src="logo.png" class="logo-img">
-    </div>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-    <!-- MENU -->
-<div class="nav">
-  <a href="index.html">Home</a>
-  <a href="#">Escorts</a>
-  <a href="#">Agencies</a>
-  <a href="escortreviews.html#">Escort Reviews</a>
-  <a href="#">Contact</a>
+<div class="side-menu" id="sideMenu">
+  <a href="#">Home</a>
+  <a href="#">Blog</a>
+  <a href="#">Contact Us</a>
+  <a href="#">Login</a>
 </div>
 
-    <!-- BUTTON -->
-<div class="auth">
-    <a href="register.html" class="register">Register</a>
-    <a href="login.html" class="login">Login</a>
+<div class="side-menu" id="sideMenu">
+
 </div>
 
 </div>
-    
-    <!-- BODY -->
-    <div class="container">
-
-        <!-- SIDEBAR -->
-<div class="sidebar horizontal">
-    <h3>
-        Country:
-        <span class="saudi">Saudi Arabia</span>
-    </h3>
-
-    <div class="city-list">
-        <a href="#">🏙️ Riyadh</a>
-        <a href="#">🌊 Jeddah</a>
-        <a href="#">⛰️ Abha</a>
-        <a href="#">🏜️ Hail</a>
-        <a href="#">🌴 Buraydah</a>
-        <a href="#">🌊 Dammam</a>
-        <a href="#">🏢 Al Khobar</a>
-        <a href="#">🌴 Al Hofuf</a>
-        <a href="#">🏭 Jubail</a>
-    </div>
-</div>
-
-        <!-- CONTENT -->
-        <div class="content">
 
 
 <h1 class="rainbow-text">
@@ -3000,5 +3189,16 @@ document.addEventListener("click", function (e) {
   <a href="page2.html">Next</a>
 
 </div>
+<script>
+function toggleMenu(btn) {
+  document.getElementById("sideMenu").classList.toggle("active");
+  document.getElementById("overlay").classList.toggle("active");
+}
+
+function closeMenu() {
+  document.getElementById("sideMenu").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
+}
+</script>
 </body>
 </html>
