@@ -660,7 +660,7 @@ transform: translateY(-4px); /* 🔽 nhẹ thôi */
   font-size: 13px;
 }
 body {
-  background: #0d0d0d;
+  background: #fff;   /* 🔥 nền trắng */
   font-family: Arial;
 }
 
@@ -1498,6 +1498,7 @@ body {
 
 /* khi mở */
 .side-menu.active {
+   width: 450px;   /* 🔥 tăng lên */
   right: 0;
 }
 
@@ -1505,11 +1506,11 @@ body {
 .side-menu a {
   display: block;
   color: #fff;
-  font-size: 32px;   /* 🔥 to hơn */
-  padding: 20px;
+  font-size: 38px;      /* 🔥 chữ to hơn */
+  padding: 28px 33px;   /* 🔥 giãn khoảng cách trên dưới */
   text-align: center;
   text-decoration: none;
-  border-bottom: 1px solid #222;
+  border-bottom: 2px solid #444;  /* 🔥 dày + sáng hơn */
 }
 
 /* nền mờ */
@@ -1533,9 +1534,7 @@ body {
 .side-menu {
   box-shadow: -8px 0 20px rgba(255,255,255,0.15); /* 🔥 ánh sáng bên trái */
 }
-body {
-  background: #f5f5f5;
-}
+
     </style>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -1564,7 +1563,7 @@ body {
 
 <div class="side-menu" id="sideMenu">
   <a href="#">Home</a>
-  <a href="#">Blog</a>
+  <a href="#">Escort Reviews</a>
   <a href="#">Contact Us</a>
   <a href="#">Login</a>
 </div>
