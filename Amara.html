@@ -802,8 +802,8 @@ max-width: 400px;
 
 /* nút X */
 .close {
-  font-size: 26px;
-  cursor: pointer;
+  background: none !important;
+  border-radius: 0 !important;
 }
 
 /* mũi tên */
@@ -851,6 +851,17 @@ max-width: 400px;
 .close:hover{
   background:rgba(255,0,100,0.8);
   transform:scale(1.1);
+}
+/* 🔥 XÓA SẠCH VIỀN TRÒN */
+.prev, .next {
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
 }
 </style>
 </head>
@@ -1227,8 +1238,15 @@ viewer.addEventListener("touchend", e => {
   if (dx < -50) nextViewer();
   if (dx > 50) prevViewer();
 });
-img1.onclick = () => openViewer(index);
-img2.onclick = () => openViewer(index);
+
+// 🔥 DÁN NGAY DƯỚI ĐÂY
+document.getElementById("mainImg").addEventListener("click", () => {
+  openViewer(index);
+});
+
+document.getElementById("mainImg2").addEventListener("click", () => {
+  openViewer(index);
+});
 </script>
 </body>
 </html>
