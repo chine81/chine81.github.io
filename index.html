@@ -1881,13 +1881,18 @@ body {
   max-width: 90%;
 }
 /* 🔥 GRID CARO CHUẨN */
-.footer-bottom {
-  background:
-    linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px),
-    linear-gradient(180deg, #c03a7d, #e02680);
+.footer-bottom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-  background-size: 50px 50px; /* 🔥 ô TO lên */
+  background-image:
+    linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px);
+
+  background-size: 45px 45px; /* 🔥 ô to + chuẩn */
+
+  pointer-events: none;
 }
     </style>
 </head>
