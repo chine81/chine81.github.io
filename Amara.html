@@ -587,15 +587,14 @@ max-width: 400px;
 
 /* menu chính */
 .side-menu {
-  position: fixed;
+  position: fixed;        /* 🔥 THÊM nếu chưa có */
   top: 0;
-  right: -250px; /* ẩn bên phải */
+  right: -250px;          /* 🔥 QUAN TRỌNG: ẩn bên phải */
 
   width: 250px;
   height: 100%;
 
   background: #111;
-  color: #fff;
 
   display: flex;
   flex-direction: column;
@@ -1190,6 +1189,9 @@ html, body {
   font-size: 18px;        /* giữ size gốc */
   transform: scale(1.4);  /* 🔥 phóng to icon */
 }
+.side-menu {
+  box-shadow: -8px 0 20px rgba(255,255,255,0.15); /* 🔥 ánh sáng bên trái */
+}
 
 </style>
 </head>
@@ -1237,12 +1239,12 @@ html, body {
 
   <!-- HÀNG 1 -->
   <div class="row-top">
-    <a href="#" class="back">← Back to search</a>
+    <a href="../index.html" class="back">← Back to search</a>
 
-    <div class="nav-btns">
-      <button>« Previous</button>
-      <button>Next »</button>
-    </div>
+<div class="nav-btns">
+<button onclick="prevPage()">« Previous</button>
+<button onclick="nextPage()">Next »</button>
+</div>
   </div>
 
   <!-- HÀNG 2 -->
@@ -1606,5 +1608,30 @@ document.getElementById("mainImg2").addEventListener("click", () => {
 <a href="https://wa.me/12897945504" class="wa-float" target="_blank">
   <i class="fab fa-whatsapp"></i>
 </a> <!-- 🔥 THÊM DÒNG NÀY -->
+<script>
+const pages = [
+  "Anna.html",
+  "Rosalie.html",
+  "Lauren.html",
+  "Hellen.html"
+];
+
+let currentPage = window.location.pathname.split("/").pop();
+let pageIndex = pages.indexOf(currentPage);
+
+// fix nếu không tìm thấy
+if (pageIndex === -1) pageIndex = 0;
+
+function nextPage() {
+  window.location.href = pages[(pageIndex + 1) % pages.length];
+}
+
+function prevPage() {
+  window.location.href = pages[(pageIndex - 1 + pages.length) % pages.length];
+}
+
+</script>
+
 </body>
+
 </html>
