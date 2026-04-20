@@ -1057,9 +1057,9 @@ box-shadow: 0 0 6px rgba(0,255,102,0.8);
     90deg,
     red,
     orange,
-    yellow,
+    rgb(143, 143, 37),
     green,
-    cyan,
+    rgb(71, 182, 182),
     blue,
     violet
   );
@@ -1067,9 +1067,10 @@ box-shadow: 0 0 6px rgba(0,255,102,0.8);
   -webkit-text-fill-color: transparent;
 }
 .rainbow-text {
-  font-size: 24px;
+  font-size:38px;
   transform: translate(0px, 25px);
 }
+
 /* menu */
 .nav a {
   font-size: 20px;           /* chữ to lên */
@@ -1488,7 +1489,7 @@ body {
   width: 320px;
   height: 100vh;   /* 🔥 full chiều cao */
 
-  background: #000;
+  background: #000;  
 
   padding-top: 120px;
 
@@ -1533,6 +1534,142 @@ body {
 }
 .side-menu {
   box-shadow: -8px 0 20px rgba(255,255,255,0.15); /* 🔥 ánh sáng bên trái */
+}
+.card .info,
+.card .info * {
+  font-size: 29px !important;   /* 🔥 chỉ to phần info */
+  line-height: 1.6 !important;
+}
+.card h3,
+.card h4,
+.card .name {
+  font-size: 37px !important;   /* 🔥 tăng size */
+  font-weight: bold !important;
+}
+.card h3 {
+  margin: 0 !important;   /* 🔥 bỏ margin gây cao */
+}
+
+.card > *:nth-child(2) {
+  margin-bottom: -5px !important;   /* 🔥 kéo dòng Female xuống */
+}
+
+.card > *:nth-child(3) {
+  margin-top: 0 !important;
+}
+.phone-row {
+  margin-bottom: -5px !important; /* 🔥 kéo xuống gần location */
+}
+
+.location {
+  margin-top: 0 !important;
+}
+.name {
+  transform: translateY(10px) !important;
+}
+.card .info {
+  padding-top: 0px !important;
+}
+.icons .whatsapp {
+  transform: scale(1.95);   /* 🔥 tăng size */
+}
+/* 🔥 RUNG + NHÚN */
+@keyframes waShake {
+  0%   { transform: scale(1) rotate(0); }
+  25%  { transform: scale(1.05) rotate(-5deg); }
+  50%  { transform: scale(1.1) rotate(5deg); }
+  75%  { transform: scale(1.05) rotate(-5deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* 🔥 rung + bounce theo nhịp */
+@keyframes waRing {
+  0%, 100% { transform: translateY(0) rotate(0); }
+
+  10% { transform: translateY(-4px) rotate(-10deg); }
+  15% { transform: translateY(4px) rotate(10deg); }
+  20% { transform: translateY(-4px) rotate(-10deg); }
+  25% { transform: translateY(4px) rotate(10deg); }
+
+  30% { transform: translateY(-6px) scale(1.1); } /* 🔥 bounce */
+  40% { transform: translateY(0) scale(1); }
+
+  60% { transform: translateY(0); } /* 🔥 nghỉ */
+}
+
+/* nút whatsapp */
+.icons .whatsapp {
+  position: relative !important;
+  width: 45px;
+  height: 45px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* icon bên trong */
+.icons .whatsapp i {
+  font-size: 22px !important;
+  color: #fff;
+}
+
+/* 🔥 vòng lan tỏa */
+.icons .whatsapp::before,
+.icons .whatsapp::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.5);
+  z-index: -1;
+  animation: waRipple 2s infinite;
+}
+
+/* lệch nhịp */
+.icons .whatsapp::after {
+  animation-delay: 1s;
+}
+
+/* animation */
+@keyframes waRipple {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.icons .whatsapp i {
+  font-size: 26px !important;   /* 🔥 tăng lên (hiện tại ~20-22) */
+}
+/* VERIFIED + PREMIUM */
+.badge,
+.verified,
+.premium {
+  font-size: 16px !important;
+  padding: 5px 10px !important;
+}
+/* 🔥 glow + nhấp nháy */
+@keyframes slidePro {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(0); }
+}
+
+.verified {
+  animation: slidePro 2s infinite;
 }
 
     </style>
