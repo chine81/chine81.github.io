@@ -1698,7 +1698,197 @@ body {
 .pagination a:not(.active) {
   pointer-events: none;   /* 🔥 khóa click */
   opacity: 0.5;           /* làm mờ cho biết bị khóa */
-}    
+}
+.footer-info {
+  background: #fff !important;
+  color: #111 !important;
+
+  padding: 30px 25px;
+  margin: 40px auto;
+
+  border-radius: 10px;
+  max-width: 900px;
+
+  line-height: 1.5; /* 🔥 giảm lại cho gọn */
+}
+
+/* tiêu đề chính */
+.footer-info h2 {
+  font-size: 58px;
+  margin-bottom: 15px;
+}
+
+.footer-info h2 span {
+  color: #ff2d7a;
+  font-weight: bold;
+}
+
+/* tiêu đề phụ */
+.footer-info h3 {
+  font-size: 52px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+/* đoạn text */
+.footer-info p {
+  font-size: 36px;
+  margin: 10px 0;   /* 🔥 thêm khoảng cách */
+}
+
+/* list thường */
+.footer-info ul {
+  padding-left: 30px;   /* 🔥 canh lại */
+  margin: 10px 0;
+}
+
+.footer-info li {
+  font-size: 36px;
+  margin: 10px 0;
+  line-height: 1.4;   /* 🔥 không bị giãn quá */
+}
+
+/* 🔥 dấu chấm gọn */
+.footer-info ul li::marker {
+  color: #111;
+}
+
+/* check list */
+.check-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.check-list li {
+  color: #111;
+  position: relative;
+  padding-left: 40px; /* 🔥 chừa chỗ cho ✔ */
+}
+
+/* ✔ đẹp + thẳng hàng */
+.check-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 5px;   /* 🔥 canh dọc */
+  color: green;
+  font-weight: bold;
+  font-size: 30px; /* 🔥 scale theo chữ lớn */
+}
+.footer-bottom {
+  position: relative;
+  text-align: center;
+
+  padding: 60px 20px;
+  color: #fff;
+
+  background: linear-gradient(180deg, #d4006e, #b8005a);
+  margin-top: 40px;
+}
+
+/* grid */
+.footer-bottom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+
+  background-size: 35px 35px;
+  pointer-events: none;
+}
+
+/* logo */
+.footer-logo {
+  width: 140px;
+  margin-bottom: 15px;
+}
+
+
+/* text */
+.footer-text {
+  max-width: 700px;
+  margin: 10px auto;
+  line-height: 1.7;
+}
+
+/* links */
+.footer-links {
+  margin-top: 20px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer-links a::before {
+  content: "• ";
+}
+
+/* copyright */
+.copyright {
+  margin-top: 15px;
+}
+
+/* social */
+.social {
+  margin-top: 20px;
+}
+
+.social span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 42px;
+  height: 42px;
+
+  background: #fff;
+  color: #000;
+  border-radius: 50%;
+
+  margin: 0 6px;
+}
+.footer-bottom .footer-text {
+  font-size: 35px;   /* 🔥 chữ to rõ */
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 15px auto;
+}/* giãn khoảng cách giữa các dòng */
+.footer-bottom .footer-text {
+  margin: 30px auto;   /* 🔥 tạo khoảng cách trên dưới */
+}
+.footer-bottom .footer-links a {
+  font-size: 35px;   /* 🔥 tăng chữ */
+  margin: 0 20px;    /* 🔥 giãn ra */
+}
+.footer-bottom .copyright {
+  font-size: 32px;
+  margin-top: 15px;
+}
+.footer-bottom .social span {
+  width: 80px;     /* 🔥 to vòng tròn */
+  height: 80px;
+  font-size: 32px; /* 🔥 icon to */
+  margin: 0 30px;
+}
+.footer-bottom .footer-logo {
+  width: 260px;   /* 🔥 tăng lên */
+  max-width: 90%;
+}
+/* 🔥 GRID CARO CHUẨN */
+.footer-bottom {
+  background:
+    linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px),
+    linear-gradient(180deg, #c03a7d, #e02680);
+
+  background-size: 50px 50px; /* 🔥 ô TO lên */
+}
     </style>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -3363,5 +3553,63 @@ function closeMenu() {
   document.getElementById("overlay").classList.remove("active");
 }
 </script>
+<div class="footer-info">
+
+  <h2>Advantages of <span>royalgirlssaudi</span></h2>
+
+  <p>
+    We are the largest and most popular platform for finding escorts in Saudi Arabia.
+  </p>
+
+  <ul>
+    <li>Easy search with filters – by age, ethnicity, nationality, and services</li>
+    <li>Regular updates – new profiles added daily</li>
+    <li>Security is our top priority – no hidden fees, direct contact only</li>
+  </ul>
+
+  <h3>Top escort service agencies in Saudi Arabia</h3>
+
+  <p>
+    We cooperate with leading escort service providers in Saudi Arabia, ensuring:
+  </p>
+
+  <ul class="check-list">
+    <li>Verified profiles</li>
+    <li>Available 24/7</li>
+    <li>Simple booking process</li>
+    <li>Full compliance with laws and data protection</li>
+  </ul>
+
+</div>
+<div class="footer-bottom">
+
+  <img src="logo.png" class="footer-logo">
+
+  <p class="footer-text">
+    <b>Welcome to Euro Girls Dubai your free escort advertising platform. Discover the finest Dubai escorts and adult advertisements in Dubai and UAE.</b>
+  </p>
+
+  <p class="footer-text">
+    <b>Important Notice:</b> This platform is exclusively for adults aged 18 and older, providing a space to connect individuals with mutual interests.
+Access is restricted to those of legal age. Dubai 18+
+  </p>
+
+  <div class="footer-links">
+    <a href="#">Contact Us</a>
+    <a href="#">Terms & Conditions</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+
+  <div class="copyright">
+    © 2026 Dubai Escort
+  </div>
+
+  <div class="social">
+    <span>f</span>
+    <span>📷</span>
+    <span>X</span>
+  </div>
+
+</div>
 </body>
 </html>
