@@ -1686,6 +1686,18 @@ body {
 /* 🔥 giữ kích thước gốc */
 .icons .whatsapp {
   transform: scale(1.95) !important;  /* 🔥 chỉnh lại size bạn muốn */
+}
+/* toàn bộ pagination */
+.pagination a,
+.pagination span {
+  font-size: 28px !important;     /* 🔥 chữ to */
+  padding: 10px 16px !important;  /* 🔥 nút to */
+  margin: 5px !important;         /* 🔥 giãn ra */
+  border-radius: 8px;
+}
+.pagination a:not(.active) {
+  pointer-events: none;   /* 🔥 khóa click */
+  opacity: 0.5;           /* làm mờ cho biết bị khóa */
 }    
     </style>
 </head>
